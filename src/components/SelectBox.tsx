@@ -27,7 +27,20 @@ interface SelectContentsItem {
 
 const SelectBox = ({defaultValue, selectItem, getValue}: SelectPropsType) => {
     return (
-        <></>
+        <Select>
+            <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder={defaultValue}/>
+            </SelectTrigger>
+            <SelectContent>
+                {
+                    selectItem.map((item) => {
+                        return (
+                            <SelectItem value={item.value} key={item.value}>{item.name}</SelectItem>
+                        )
+                    })
+                }
+            </SelectContent>
+        </Select>
     )
 }
 
