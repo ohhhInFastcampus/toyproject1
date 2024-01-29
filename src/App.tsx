@@ -1,16 +1,11 @@
 import './App.css';
-import { Skeleton } from '@/components/ui/skeleton';
-
+import { Button } from '@/components/ui/button.tsx';
 function App() {
   return (
-    <div className="nflex nflex-col nspace-y-3">
-      <Skeleton className="nh-[125px] nw-[250px] nrounded-xl" />
-      <div className="nspace-y-2">
-        <Skeleton className="nh-4 nw-[250px]" />
-        <Skeleton className="nh-4 nw-[200px] nbg-gray-400" />
-      </div>
+    <div>
+      <Button>우와~</Button>
     </div>
-  )
+  );
 }
 
 export default App;
