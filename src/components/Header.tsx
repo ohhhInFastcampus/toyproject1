@@ -7,12 +7,13 @@ interface GnbListType {
 
 const Logo = () => {
     return (
-        <a href={"#"} className={"nblock nw-1/12"}>
+        <a href={"/"} className={"nblock nw-1/12"}>
             <img src={img} alt={"logo"}/>
         </a>
     )
 }
 const Gnb = () => {
+    //TODO 라우터 생성시 link 부분 수정
     const gnbList: GnbListType[] = [
         {
             title: "부재신청",
@@ -33,6 +34,7 @@ const Gnb = () => {
                 gnbList.map((item) => {
                     return (
                         <li className={"nflex nalign-center njustify-center nfont-bold ntext-base"} key={item.title}>
+                            {/*호버 시 백그라운드 색상 변화도록 추가*/}
                             <a className={`nflex items-center njustify-center np-3 nrounded-xl ntransition hover:nbg-black hover:ntext-white`} href={item.link}>
                                 {item.title}
                             </a>
@@ -45,6 +47,7 @@ const Gnb = () => {
 }
 
 const User = () => {
+    //TODO 컴포넌트는 데이터 연결 시 컴포넌트 생성 예정
     return (
         <div>
             유저 이미지 (예정)
