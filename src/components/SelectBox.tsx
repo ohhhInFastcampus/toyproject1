@@ -27,7 +27,9 @@ interface SelectContentsItem {
 
 const SelectBox = ({defaultValue, selectItem, getValue}: SelectPropsType) => {
     return (
-        <Select>
+        <Select onValueChange={(value) => {
+            getValue(value);
+        }}>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder={defaultValue}/>
             </SelectTrigger>
