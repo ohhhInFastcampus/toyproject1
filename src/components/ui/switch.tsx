@@ -8,7 +8,7 @@ const Switch = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> & {
     checkedColor?: string;
   }
->(({ className, checkedColor = "nbg-", ...props }, ref) => (
+>(({ className, checkedColor = "nbg-background", ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
       "npeer ninline-flex nh-6 nw-14 nshrink-0 ncursor-pointer nitems-center nrounded-full nborder-2 nborder-transparent ntransition-colors focus-visible:noutline-none focus-visible:nring-2 focus-visible:nring-ring focus-visible:nring-offset-2 focus-visible:nring-offset-background disabled:ncursor-not-allowed disabled:nopacity-50 data-[state=unchecked]:nbg-input",
