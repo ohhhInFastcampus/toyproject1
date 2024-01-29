@@ -1,17 +1,15 @@
-import "./App.css";
-import { Switch } from "./components/ui/switch";
-
-import { Textarea } from "./components/ui/textarea";
+import './App.css';
+import { Button } from '@/components/ui/button.tsx';
+import { Input } from '@/components/ui/input';
 
 function App() {
   return (
-    <>
-      <Switch checkedColor="nbg-red-950" />
-      <Textarea
-        placeholder="Tell us a little bit about yourself"
-        className="resize-none"
-      />
-    </>
+    <div>
+      <Input type='text' placeholder='아이디:' />
+      <Button variant='default' size='sm' font='xl' weight='bold'>
+        Button
+      </Button>
+    </div>
   );
 }
 
