@@ -47,14 +47,15 @@ function Calendar({
           "nday-outside ntext-muted-foreground nopacity-50 naria-selected:nbg-accent/50 naria-selected:ntext-muted-foreground naria-selected:nopacity-30",
         day_disabled: "ntext-muted-foreground nopacity-50",
         day_range_middle:
-          "aria-selected:nbg-accent naria-selected:ntext-accent-foreground",
+          "naria-selected:nbg-accent naria-selected:ntext-accent-foreground",
         day_hidden: "ninvisible",
         ...classNames,
       }}
-      components={{
-        IconLeft: ({ ...props }) => <ChevronLeft className="nh-4 nw-4" />,
-        IconRight: ({ ...props }) => <ChevronRight className="nh-4 nw-4" />,
-      }}
+      // SVG 출력이 되지 않아 추후에 수정필요
+      // components={{
+      //   IconLeft: ({ ...props }) => <ChevronLeft className="nh-4 nw-4" />,
+      //   IconRight: ({ ...props }) => <ChevronRight className="nh-4 nw-4" />,
+      // }}
       {...props}
     />
   )
