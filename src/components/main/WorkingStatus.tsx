@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState} from 'react';
 // import axios from 'axios'; 서버에서 데이터 불러올 때 사용 예정
 
 interface TeamMember {
@@ -16,7 +16,7 @@ const teamMembers: TeamMember[] = [
 ];
 
 const WorkingStatus = () => {
-  const [members, setMembers] = useState<TeamMember[]>(teamMembers);
+  const [members] = useState<TeamMember[]>(teamMembers);
 
   //서버에서 데이터 불러올 때 사용 예정
   // useEffect(() => {
