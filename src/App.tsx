@@ -4,15 +4,11 @@ import Layout from "@/components/Layout.tsx";
 import Main from "@/templates/main";
 import Gallery from "@/templates/gallery";
 import ErrorPage from "@/templates/error";
+import GalleryDetail from "@/templates/galleryDetail";
 
 const router = createBrowserRouter([
     {
-        id: "root",
         path: "/",
-        loader() {
-            // Our root route always provides the user, if logged in
-            return {user: ""};
-        },
         errorElement: <ErrorPage/>,
         Component: Layout,
         children: [
@@ -24,13 +20,17 @@ const router = createBrowserRouter([
                 path: "gallery",
                 // action: loginAction,
                 Component: Gallery,
-                children: [
-                    {
-                        path: ":id",
-                        // loader: todoLoader,
-                        Component: Gallery,
-                    }
-                ]
+                // children: [
+                //     {
+                //         path: "/:id",
+                //         // loader: todoLoader,
+                //         Component: GalleryDetail,
+                //     }
+                // ]
+            },
+            {
+                path: "gallery/:id",
+                Component : GalleryDetail
             },
             {
                 path: "absenceRequest",
