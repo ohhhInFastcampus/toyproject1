@@ -1,0 +1,21 @@
+.gallery {
+
+
+  .gallery__title {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .gallery__card--grid {
+    display: grid;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-bottom: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 50px;
+  }
+}
