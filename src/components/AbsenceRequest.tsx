@@ -20,12 +20,12 @@ interface reqAbsenceType {
   reason : string
 }
 
-interface resAbsenceType {
-  email : string ,
-  date : Date,
-  absenceTime : number,
-  reason : string
-}
+// interface resAbsenceType {
+//   email : string ,
+//   date : Date,
+//   absenceTime : number,
+//   reason : string
+// }
 
 function AbsenceRequest() {
 
