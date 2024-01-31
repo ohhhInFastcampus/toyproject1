@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import {RequestDetailType} from "@/components/absence_request/types";
+import {RequestDetailType} from "@/components/absenceRequest/types";
 import { Label } from "@/components/ui/label";
 
 const RequestDetail = ({type, input } : RequestDetailType) => {

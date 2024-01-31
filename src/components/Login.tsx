@@ -17,12 +17,12 @@ interface reqLoginType {
   password : string,
 }
 
-interface resLoginType {
-  token : string,
-  refreshToken : string,
-  startDate : string,
-  expiredDate : string
-}
+// interface resLoginType {
+//   token : string,
+//   refreshToken : string,
+//   startDate : string,
+//   expiredDate : string
+// }
 
 function Login() {
 
@@ -83,3 +83,4 @@ function Login() {
 }
 
 export default Login;
+
