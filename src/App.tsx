@@ -5,8 +5,6 @@ import Main from "@/templates/main";
 import Gallery from "@/templates/gallery";
 import ErrorPage from "@/templates/error";
 import GalleryDetail from "@/templates/galleryDetail";
-import Login from '@/templates/login';
-import AbsenceRequest from '@/templates/absenceRequest';
 
 const router = createBrowserRouter([
     {
@@ -62,7 +60,7 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <><RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} /><Login /><AbsenceRequest/></>
+        <><RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} /></>
     );
 }
 
