@@ -9,6 +9,7 @@ interface TextareaBox {
   textareaId: string; // Textarea ID
 }
 
+// TODO: textarea 참조할 수 있게하기
 const containerVariants = cva(
   "nflex nflex-col ninline-flex nw-full ngap-1.5  nrounded-ful"
 );
@@ -19,7 +20,7 @@ export function TextareaBox({ label, placeholder, textareaId }: TextareaBox) {
     <div className={cn(containerVariants())}>
       {label && (
         <Label htmlFor={textareaId} className={cn(labelVariants())}>
-          {label}{" "}
+          {label}
         </Label>
       )}
       <Textarea placeholder={placeholder || ""} id={textareaId} />
