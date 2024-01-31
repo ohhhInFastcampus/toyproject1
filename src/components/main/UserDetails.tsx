@@ -34,7 +34,7 @@ const UserDetails = () => {
     <div>
   {members.map((member, index) => (
     <div key={index} className="mb-2">
-      <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center">
+      <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center nfont-semibold">
         <div className="nmr-10">
           부서: {member.department}
         </div>

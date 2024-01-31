@@ -31,7 +31,7 @@ const UserName = () => {
   // }, []);
 
   return (
-    <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center">
+    <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center nfont-semibold">
       {member.map((member, index) => (
         <div key={index}>이름: {member.name}</div>
       ))}

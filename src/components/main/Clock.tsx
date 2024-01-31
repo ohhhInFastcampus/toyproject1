@@ -14,7 +14,7 @@ function Clock() {
 
   const dayOfWeek = date.toLocaleString('en-US', { weekday: 'short' });
   const monthDay = date.toLocaleString('en-US', { month: 'short', day: 'numeric' });
-  const hourMinute = date.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+  const hourMinute = date.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
 
   return (
     <div className="nflex nitems-center">

@@ -35,7 +35,7 @@ const UserTime = () => {
       {member.map((member, index) => (
         <div key={index}>
             {member.starttime && member.endtime && (
-              <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center">
+              <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center nfont-semibold">
                 <div className="nmr-10">시작 시간: {member.starttime}</div>
                 <div>종료 시간: {member.endtime}</div>
               </div>

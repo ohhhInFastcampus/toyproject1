@@ -21,7 +21,7 @@ function TodoList() {
         <p className="ntext-sm nfont-bold">{`${monthDay}(${dayOfWeek})`}</p>
       </div>
       <div className="nflex-1 nbg-white nrounded-lg np-2">
-        <p className="ntext-sm nfont-medium">11차 멘토링 <br /> 서비스 분석 회의 </p>
+        <p className="ntext-sm nfont-semibold">11차 멘토링 <br /> 서비스 분석 회의 </p>
       </div>
     </div>
   );
