@@ -1,3 +1,4 @@
+import { Avatar, AvatarImage,} from '../ui/avatar';
 import { Button } from '../ui/button';
 
 interface UserProps {
@@ -8,7 +9,9 @@ const UserHeader = ({ name }: UserProps) => {
   
     return (
       <div className="nflex nitems-center nbg-blue-100 nrounded-full npx-3 npy-1">
-        <img src="/vite.svg" alt="User Profile" className="nw-10 nh-10 nrounded-full nmr-2" />
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="User Profile" />
+        </Avatar>
         <Button size="s" font="xs" className="nm-1 nbg-black ntext-white">
           {name}
         </Button>                                                                
