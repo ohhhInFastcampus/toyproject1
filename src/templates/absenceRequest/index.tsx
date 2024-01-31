@@ -1,27 +1,14 @@
 import { SetStateAction, useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card"
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import SelectBox from '@/components/SelectBox';
+import RequestDetail from '@/components/absence_request/RequestDetail';
 
 interface reqAbsenceType {
-  email : string ,
-  date : Date,
-  absenceTime : number,
-  reason : string
-}
-
-interface resAbsenceType {
   email : string ,
   date : Date,
   absenceTime : number,
@@ -71,7 +58,11 @@ function AbsenceRequest() {
       </CardHeader>
       <CardContent className="grid gap-6">
         <div className="grid grid-cols-2 gap-4">
-          <div className="grid gap-2">
+          <RequestDetail type="이름" input="text" />
+          <RequestDetail type="직급" input="title" />
+          <RequestDetail type="결재자" input="approver" />
+          <RequestDetail type="날짜" input="date" />
+          {/* <div className="grid gap-2">
             <Label htmlFor="name">이름</Label>
             <Input id="name" type="text" placeholder="이름" onChange={handleChange} />
           </div>
@@ -86,7 +77,7 @@ function AbsenceRequest() {
           <div className="grid gap-2">
             <Label htmlFor="area">날짜</Label>
             <Input id="date" type="date" placeholder="날짜" onChange={handleChange}/>
-          </div>
+          </div> */}
           <div className="grid gap-2">
             <Label htmlFor="request-absence-type">부재신청 타입</Label>
             <SelectBox defaultValue={''} 
