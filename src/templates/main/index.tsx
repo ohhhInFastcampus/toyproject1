@@ -4,6 +4,7 @@ import UserName from "@/components/main/UserName";
 import UserDetails from "@/components/main/UserDetails";
 import UserTime from "@/components/main/UserTime";
 import { UserAvatar } from "@/components/main/UserAvatar";
+import { TodoList } from "@/components/main/TodoList";
 
 const Main = () => {
   const [switchState, setSwitchState] = useState(false);
@@ -21,6 +22,7 @@ const Main = () => {
         switchState={switchState}
       />
       <UserTime />
+      <TodoList />
     </>
   );
 };
