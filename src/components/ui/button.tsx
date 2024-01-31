@@ -19,6 +19,7 @@ const buttonVariants = cva(
 
       size: {
         default: 'nh-10 npx-4 npy-2',
+        sx: 'nh-1 npx-1 npy-1',
         sm: 'nh-9 nrounded-md npx-3',
         lg: 'nh-11 nrounded-md npx-8',
         icon: 'nh-10 nw-10',

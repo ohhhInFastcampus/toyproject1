@@ -1,5 +1,9 @@
 import { useState } from "react";
 import MainJobState from "@/components/main/MainJobState";
+import UserName from "@/components/main/UserName";
+import UserDetails from "@/components/main/UserDetails";
+import UserTime from "@/components/main/UserTime";
+import { UserAvatar } from "@/components/main/UserAvatar";
 
 const Main = () => {
   const [switchState, setSwitchState] = useState(false);
@@ -9,10 +13,14 @@ const Main = () => {
   };
   return (
     <>
+      <UserAvatar />
+      <UserName />
+      <UserDetails />
       <MainJobState
         onSwitchChange={handleSwitchChange}
         switchState={switchState}
       />
+      <UserTime />
     </>
   );
 };

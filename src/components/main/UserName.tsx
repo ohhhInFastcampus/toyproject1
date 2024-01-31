@@ -13,8 +13,8 @@ const memberDetails: MemberDetail[] = [
   { name: '정지혜', department: 'Core Team', role: 'lead', starttime: '09:00', endtime: '18:00' }
 ];
 
-const UserDetails = () => {
-  const [members] = useState<MemberDetail[]>(memberDetails);
+const UserName = () => {
+  const [member] = useState<MemberDetail[]>(memberDetails);
 
   //서버에서 데이터 불러올 때 사용 예정
   // useEffect(() => {
@@ -31,21 +31,12 @@ const UserDetails = () => {
   // }, []);
 
   return (
-    <div>
-  {members.map((member, index) => (
-    <div key={index} className="mb-2">
-      <div className="nflex nflex-row nbg-gray-500 nrounded-xl np-3 nitems-center">
-        <div className="nmr-10">
-          부서: {member.department}
-        </div>
-        <div>
-          직급: {member.role}
-        </div>
-      </div>
+    <div className="nflex nflex-row nbg-gray-500 nrounded-xl np-3 nitems-center">
+      {member.map((member, index) => (
+        <div key={index}>이름: {member.name}</div>
+      ))}
     </div>
-  ))}
-</div>
   );
 };
 
-export default UserDetails;
+export default UserName;

@@ -1,18 +1,20 @@
 import {
     Avatar,
-    AvatarFallback,
     AvatarImage,
   } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+  
   
   function UserAvatar() {
     return (
       <>
-        <Avatar className={`nflex njustify-center`}>
-          <AvatarImage src="/vite.svg" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div className={`nflex njustify-center nitem-center nw-4 nh-4 nrounded-full nbg-gray-200`}>
-          <span className={`ntext-sm`}>+</span>
+        <div className="nrelative ninline-block"> 
+          <Avatar className="nflex njustify-center">
+            <AvatarImage src="/vite.svg" alt="@shadcn" />
+          </Avatar>
+          <Button variant="outline" size="sx" font="xs" className="nabsolute nright-0 nbottom-0 nflex njustify-center nalign-items nrounded-full nh-2 nw-2 nbg-gray-300" >
+            +
+          </Button>
         </div>
       </>
     )
