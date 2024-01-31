@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
+const SECOND_TO_MILLISECONDS = 1000;
+
 function TodoList() {
   const [ date, setDate] = useState(new Date());
 
   useEffect(() => {
       const timerId = setInterval(() => {
           setDate(new Date());
-      }, 1000);
+      }, SECOND_TO_MILLISECONDS);
       return () => clearInterval(timerId);
   }, []);
 
