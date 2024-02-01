@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import img from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import LoginDetail from "@/components/login/LoginDetail";
 
 interface reqLoginType {
@@ -23,9 +23,9 @@ function Login() {
 
   return (
     <Card className="nflex njustify-center">
-      <Card className="nw-[500px] np-5 nm-10 nborder-solid nborder-2 nborder-gray-300">
+      <Card className="nw-[450px] npy-[50px] nm-10 nborder-solid nborder-2 nborder-gray-300">
         <CardHeader className="ngrid njustify-items-center">
-            <a href={"/"} className={"nblock nw-40"}>
+            <a href={"/"} className={"nblock  nmb-5 nw-[150px]"}>
               <img src={img} alt={"logo"} />
             </a>
         </CardHeader>
@@ -46,13 +46,13 @@ function Login() {
           />
         </CardContent>
         <CardFooter className="ngrid njustify-items-center">
-          <Button className="nw-60 np-2" onClick={handleLogin}>
+          <Button className="nw-60 nmt-2 np-2" onClick={handleLogin}>
             로그인
           </Button>
-        </CardFooter>
-        <CardDescription className="ngrid nmb-8 njustify-items-center">
+          <CardDescription className="nmt-3">
           아이디 / 비밀번호 찾기
-        </CardDescription>
+          </CardDescription>
+        </CardFooter>
       </Card>
     </Card>
   );

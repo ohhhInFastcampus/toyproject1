@@ -51,9 +51,9 @@ function AbsenceRequest() {
   
   
   return (
-    <Card className="nw-[500px] nborder-solid nborder-2 nborder-gray-300">
+    <Card className="nw-[500px] np-[30px] nm-10 nborder-solid nborder-2 nborder-gray-300">
       <form onSubmit={handleSubmit}>
-        <CardHeader className="ngrid njustify-items-center">
+        <CardHeader className="ngrid njustify-items-center npy-5 nmb-5">
           <CardTitle className="njustify-items-center">부재 신청</CardTitle>
         </CardHeader>
         <CardContent>

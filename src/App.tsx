@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Login,
+                Component: AbsenceRequest,
             },
             {
                 path: "gallery",
