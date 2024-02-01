@@ -57,7 +57,15 @@ const User = () => {
   //TODO 컴포넌트는 데이터 연결 시 컴포넌트 생성 예정
   return (
     <div>
-      <UserHeader name="정지혜" />
+      <UserHeader
+        name="정지혜"
+        profile={""}
+        department={""}
+        role={""}
+        isWorking={"working"}
+        startTime={""}
+        endTime={""}
+      />
     </div>
   );
 };
