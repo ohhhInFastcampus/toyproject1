@@ -5,7 +5,6 @@ import UserDetails from "@/components/main/UserDetails";
 import UserTime from "@/components/main/UserTime";
 import { UserAvatar } from "@/components/main/UserAvatar";
 import { TodoList } from "@/components/main/TodoList";
-import {UserHeader} from "@/components/main/UserHeader";
 
 const UserMain = () => {
   const [switchState, setSwitchState] = useState(false);
