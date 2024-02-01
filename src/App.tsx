@@ -60,7 +60,7 @@ const router = createBrowserRouter([
 
 function App() {
     return (
-        <RouterProvider router={router} fallbackElement={<p>Initial Load...</p>}/>
+        <><RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} /></>
     );
 }
 
