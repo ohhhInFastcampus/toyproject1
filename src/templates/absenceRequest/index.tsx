@@ -13,14 +13,14 @@ interface reqAbsenceType {
   email : string ,
   date : Date,
   absenceTime : number,
+  halfDayTime: string,
   reason : string,
 }
 
 function AbsenceRequest() {
 
   const [value, setValue] = useState('')
-
-
+  const [showButtons, setShowButtons] = useState(false);
   const [formData, setFormData] = useState<reqAbsenceType>({
     email: '',
     name: '',
@@ -28,9 +28,9 @@ function AbsenceRequest() {
     approver: '',
     date: new Date(),
     absenceTime: 0,
+    halfDayTime: '',
     reason: '',
   });
-
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,15 +41,34 @@ function AbsenceRequest() {
     console.log(formData);
   };
 
+  const handleTimeClick = (time: string) => {
+    setFormData(prevData => ({
+        ...prevData,
+        halfDayTime: time 
+    }));
+  };
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
+    if (id === 'request-absence-type') {
+      setShowButtons(value === '4');
+    }
     setFormData(prevData => ({
       ...prevData,
       [id]: value
     }));
   };
   
+  // const handleSelect = (selectedValue: string) => {
+  //   setValue(selectedValue);
+  //   if (selectedValue === '4') {
+  //     return setShowButtons(true);
+  //   } else {
+  //     return setShowButtons(false);
+  //   }
+  // };
   
+
   return (
     <Card className="nw-[500px] np-[30px] nm-10 nborder-solid nborder-2 nborder-gray-300">
       <form onSubmit={handleSubmit}>
@@ -64,13 +83,20 @@ function AbsenceRequest() {
             <RequestDetail type="날짜" input="date" id="date" onChange={handleChange} />
           </div>  
           <div className="nflex-row ngap-6 np-3">
-              <Label className="nflex nmy-3" htmlFor="request-absence-type">부재신청 타입</Label>
-              <SelectBox defaultValue={''} 
+            <Label className="nflex nmy-3" htmlFor="request-absence-type">부재신청 타입</Label>
+            <SelectBox 
+              defaultValue={''} 
               selectItem={[
-                {value : "4",name : "반차"}, 
-                {value : "8", name: "연차"}]} 
-                getValue={setValue} />
+              {value : "4",name : "반차"}, 
+              {value : "8", name: "연차"}]} 
+              getValue={setValue} />
           </div>
+          {showButtons && (
+            <div className="nflex ngap-3 np-3">
+              <Button type="button" onClick={() => handleTimeClick("오전")}>오전</Button>
+              <Button type="button" onClick={() => handleTimeClick("오후")}>오후</Button>
+            </div>
+          )}
           <div className="nflex-row ngap-6 np-3">
             <Label className="nflex nmy-3" htmlFor="reason">부재신청 사유</Label>
             <Textarea 
