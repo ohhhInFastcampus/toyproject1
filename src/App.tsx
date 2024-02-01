@@ -2,7 +2,7 @@ import './App.css';
 import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
 import Layout from "@/components/Layout.tsx";
 import Main from "@/templates/main";
-import Gallery from "@/templates/gallery";
+import GalleryPage from "@/containers/gallery";
 import ErrorPage from "@/templates/error";
 import GalleryDetailPage from "@/containers/galleryDetail";
 
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
             {
                 path: "gallery",
                 // action: loginAction,
-                Component: Gallery,
+                Component: GalleryPage,
                 // children: [
                 //     {
                 //         path: "/:id",
