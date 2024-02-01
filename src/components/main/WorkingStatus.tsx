@@ -6,11 +6,11 @@ interface WorkingStatusProps {
 
 const WorkingStatus = ({ members }: WorkingStatusProps) => {
   return (
-    <div className="nw-[300px] nh-[00px] np-7 nbg-white nrounded-lg nshadow-md nborder-2">
+    <div className="nw-[300px] nh-[400px] np-7 nbg-white nrounded-lg nshadow-md nborder-2">
       <div className="nbg-yellow-200 nrounded-lg nshadow-md np-2 nmb-4">
         <h1 className="ntext-lg ntext-center nfont-bold">근무중인 사람</h1>
       </div>
-      <h2 className="ntext-left nfont-bold">Core Team</h2>
+      <h2 className="nmt-8 ntext-left nfont-bold">Core Team</h2>
       <ul className="nmt-4">
         {members.map((member) => (
           <li key={member.name} className="nflex nitems-center nmb-2">

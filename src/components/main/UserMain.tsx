@@ -1,9 +1,12 @@
 import { useState } from "react";
 import MainJobState from "@/components/main/MainJobState";
-import UserName from "@/components/main/UserName";
 import UserDetails from "@/components/main/UserDetails";
 import UserTime from "@/components/main/UserTime";
 import { UserAvatar } from "@/components/main/UserAvatar";
+import WhiteBox from "@/components/main/WhiteBox";
+import { memberDetails } from "@/mocks/teamList";
+
+const User = memberDetails[0];
 
 const UserMain = () => {
   const [switchState, setSwitchState] = useState(false);
@@ -11,6 +14,7 @@ const UserMain = () => {
   const handleSwitchChange = (newState: boolean) => {
     setSwitchState(newState);
   };
+
   return (
     <>
       <div className="nw-[400px]">
@@ -18,9 +22,11 @@ const UserMain = () => {
           <div className="nself-center ">
             <UserAvatar />
           </div>
-          <div>
-            <UserName />
-          </div>
+          <WhiteBox>이름: {User.name}</WhiteBox>
+          <WhiteBox>
+            <div className="nmr-10">부서: {User.department}</div>
+            <div>직급: {User.role}</div>
+          </WhiteBox>
           <div className="nmb-6">
             <UserDetails />
           </div>
