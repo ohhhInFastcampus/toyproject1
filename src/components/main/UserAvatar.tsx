@@ -1,8 +1,8 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { MemberMockType } from "@/components/main/types";
+import { MemberDetailType } from "@/components/main/types";
 
-const UserAvatar = ({ profile }: MemberMockType) => {
+const UserAvatar = ({ profile }: MemberDetailType) => {
   return (
     <>
       <div className="nrelative ninline-block">

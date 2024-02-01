@@ -1,7 +1,7 @@
-import { MemberMockType } from "@/components/main/types";
+import { MemberDetailType } from "@/components/main/types";
 
 interface WorkingStatusProps {
-  members: MemberMockType[];
+  members: MemberDetailType[];
 }
 
 const WorkingStatus = ({ members }: WorkingStatusProps) => {

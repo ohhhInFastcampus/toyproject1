@@ -26,8 +26,8 @@ function Clock() {
   return (
     <div className="nflex np-3 nitems-center">
       <div>
-        <p className="ntext-lg nfont-medium">{`${dayOfWeek}, ${monthDay}`}</p>
-        <p className="ntext-3xl nfont-semibold">{hourMinute}</p>
+        <p className="ntext-right nmb-3 ntext-2lg nfont-medium">{`${dayOfWeek}, ${monthDay}`}</p>
+        <p className="ntext-5xl nfont-semibold">{hourMinute}</p>
       </div>
     </div>
   );

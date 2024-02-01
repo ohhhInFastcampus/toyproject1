@@ -1,14 +1,14 @@
-import { MemberMockType } from "@/components/main/types.ts";
+import { MemberDetailType } from "@/components/main/types.ts";
 
-export const memberDetails: MemberMockType[] = [
+export const memberDetails: MemberDetailType[] = [
   {
     profile: "/vite.svg",
     name: "Helpdesku",
     department: "Core Team",
     role: "CEO",
     isWorking: "not working",
-    starttime: "09:00",
-    endtime: "18:00",
+    startTime: "09:00",
+    endTime: "18:00",
   },
   {
     profile: "/vite.svg",
@@ -16,8 +16,8 @@ export const memberDetails: MemberMockType[] = [
     department: "Core Team",
     role: "Director",
     isWorking: "working",
-    starttime: "09:00",
-    endtime: "18:00",
+    startTime: "09:00",
+    endTime: "18:00",
   },
   {
     profile: "/vite.svg",
@@ -25,8 +25,8 @@ export const memberDetails: MemberMockType[] = [
     department: "Core Team",
     role: "Manager",
     isWorking: "working",
-    starttime: "09:00",
-    endtime: "18:00",
+    startTime: "09:00",
+    endTime: "18:00",
   },
   {
     profile: "/vite.svg",
@@ -34,8 +34,8 @@ export const memberDetails: MemberMockType[] = [
     department: "Core Team",
     role: "Developer",
     isWorking: "working",
-    starttime: "09:00",
-    endtime: "18:00",
+    startTime: "09:00",
+    endTime: "18:00",
   },
   {
     profile: "/vite.svg",
@@ -43,7 +43,7 @@ export const memberDetails: MemberMockType[] = [
     department: "Core Team",
     role: "Intern",
     isWorking: "working",
-    starttime: "09:00",
-    endtime: "18:00",
+    startTime: "09:00",
+    endTime: "18:00",
   },
 ];

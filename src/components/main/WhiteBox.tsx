@@ -1,10 +1,15 @@
-import { Outlet } from "react-router-dom";
-const WhiteBox = (className: string) => {
+import { ReactNode } from "react";
+
+interface WhiteBoxType {
+  children: ReactNode;
+  className?: string;
+}
+const WhiteBox = ({ children, className }: WhiteBoxType) => {
   return (
     <div
       className={`nflex nflex-row nbg-white nrounded-full np-3 njustify-center nitems-center nfont-semibold ${className}`}
     >
-      <Outlet />
+      {children}
     </div>
   );
 };

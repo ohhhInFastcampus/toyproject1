@@ -1,9 +1,9 @@
-export interface MemberMockType {
+export interface MemberDetailType {
   profile: string;
   name: string;
   department: string;
   role: string;
   isWorking: "working" | "not working";
-  starttime: string;
-  endtime: string;
+  startTime: string;
+  endTime: string;
 }
