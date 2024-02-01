@@ -1,59 +1,12 @@
-import { useState } from "react";
-// import axios from 'axios'; 서버에서 데이터 불러올 때 사용 예정
+import { MemberMockType } from "@/components/main/types";
 
-interface TeamMember {
-  department: string;
-  name: string;
-  isWorking: "working" | "not working";
-  profile: string;
+interface WorkingStatusProps {
+  members: MemberMockType[];
 }
-//데이터 예시
-const teamMembers: TeamMember[] = [
-  {
-    department: "Core Team",
-    name: "정지혜",
-    isWorking: "working",
-    profile: "/vite.svg",
-  },
-  {
-    department: "Core Team",
-    name: "최홍주",
-    isWorking: "working",
-    profile: "/vite.svg",
-  },
-  {
-    department: "Core Team",
-    name: "함지훈",
-    isWorking: "not working",
-    profile: "/vite.svg",
-  },
-  {
-    department: "Core Team",
-    name: "김정은",
-    isWorking: "not working",
-    profile: "/vite.svg",
-  },
-];
 
-const WorkingStatus = () => {
-  const [members] = useState<TeamMember[]>(teamMembers);
-
-  //서버에서 데이터 불러올 때 사용 예정
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('/api/team-members');
-  //       setMembers(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
+const WorkingStatus = ({ members }: WorkingStatusProps) => {
   return (
-    <div className="nw-[300px] nh-[400px] np-7 nbg-white nrounded-lg nshadow-md nborder-2">
+    <div className="nw-[300px] nh-[00px] np-7 nbg-white nrounded-lg nshadow-md nborder-2">
       <div className="nbg-yellow-200 nrounded-lg nshadow-md np-2 nmb-4">
         <h1 className="ntext-lg ntext-center nfont-bold">근무중인 사람</h1>
       </div>

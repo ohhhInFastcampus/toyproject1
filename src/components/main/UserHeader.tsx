@@ -1,11 +1,8 @@
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
+import { MemberMockType } from "@/components/main/types";
 
-interface UserProps {
-  name: string;
-}
-
-const UserHeader = ({ name }: UserProps) => {
+const UserHeader = ({ name }: MemberMockType) => {
   return (
     <div className="nflex nitems-center nbg-blue-200 nrounded-xl npx-3 npy-1">
       <Avatar>

@@ -1,12 +1,13 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { MemberMockType } from "@/components/main/types";
 
-function UserAvatar() {
+const UserAvatar = ({ profile }: MemberMockType) => {
   return (
     <>
       <div className="nrelative ninline-block">
         <Avatar className="nflex njustify-center nw-40 nh-40 nbg-white">
-          <AvatarImage src="/vite.svg" alt="@shadcn" />
+          <AvatarImage src={profile} alt="@shadcn" />
         </Avatar>
         <Button
           variant="outline"
@@ -19,5 +20,5 @@ function UserAvatar() {
       </div>
     </>
   );
-}
+};
 export { UserAvatar };

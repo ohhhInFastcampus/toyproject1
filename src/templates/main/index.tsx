@@ -3,6 +3,7 @@ import { Calendar } from "@/components/main/Calendar";
 import { Clock } from "@/components/main/Clock";
 import { TodoList } from "@/components/main/TodoList";
 import WorkingStatus from "@/components/main/WorkingStatus";
+import { memberDetails } from "@/mocks/teamList";
 
 const Main = () => {
   return (
@@ -14,7 +15,7 @@ const Main = () => {
         <TodoList />
       </div>
       <div className="nw-[400px] nm-5 nflex njustify-center">
-        <WorkingStatus />
+        <WorkingStatus members={memberDetails} />
       </div>
     </div>
   );
