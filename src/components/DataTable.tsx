@@ -40,7 +40,8 @@ const TableHeaderData = ({ headers }: HeaderData) => {
           return (
             <TableHead
               className={cn(TableHeadVariants({ align: alignVarian }))}
-              key={index}>
+              key={index}
+            >
               {header}
             </TableHead>
           );
@@ -63,7 +64,8 @@ const TableBodyData = ({ data }: TableData) => {
         return (
           <TableRow
             className="ndivide-y nborder-solid nborder-slate-300 "
-            key={key}>
+            key={key}
+          >
             {data[key].map((cellData, cellIndex) => {
               const alignVarian = cellIndex === 0 ? "center" : "left";
               const boldVarian = cellIndex === 0 ? "bold" : "default";
@@ -75,7 +77,8 @@ const TableBodyData = ({ data }: TableData) => {
                       bold: boldVarian,
                     })
                   )}
-                  key={cellIndex}>
+                  key={cellIndex}
+                >
                   {cellData}
                 </TableCell>
               );

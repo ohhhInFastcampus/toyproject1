@@ -1,22 +1,18 @@
-import { Avatar, AvatarImage,} from '../ui/avatar';
-import { Button } from '../ui/button';
+import { Avatar, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { MemberDetailType } from "@/components/main/types";
 
-interface UserProps {
-  name: string;
-}
-
-const UserHeader = ({ name }: UserProps) => {
-
-    return (
-      <div className="nflex nitems-center nbg-blue-100 nrounded-full npx-3 npy-1">
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="User Profile" />
-        </Avatar>
-        <Button size="s" font="xs" className="nm-1 nbg-black ntext-white">
-          {name}
-        </Button>                                                                
-      </div>
-    );
+const UserHeader = ({ name }: MemberDetailType) => {
+  return (
+    <div className="nflex nitems-center nbg-blue-200 nrounded-xl npx-3 npy-1">
+      <Avatar>
+        <AvatarImage src="/vite.svg" alt="User Profile" className="nbg-white" />
+      </Avatar>
+      <Button size="s" className="nm-1 nml-2">
+        {name}
+      </Button>
+    </div>
+  );
 };
 
-export {UserHeader};
+export { UserHeader };

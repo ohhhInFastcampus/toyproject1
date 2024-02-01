@@ -1,31 +1,31 @@
-import { useState } from "react";
-import MainJobState from "@/components/main/MainJobState";
-import UserName from "@/components/main/UserName";
-import UserDetails from "@/components/main/UserDetails";
-import UserTime from "@/components/main/UserTime";
-import { UserAvatar } from "@/components/main/UserAvatar";
+import UserMain from "@/components/main/UserMain";
+import { Clock } from "@/components/main/Clock";
+import { Calendar } from "@/components/main/Calendar";
 import { TodoList } from "@/components/main/TodoList";
-import {UserHeader} from "@/components/main/UserHeader";
+import WorkingStatus from "@/components/main/WorkingStatus";
+import { memberDetails } from "@/mocks/teamList";
 
 const Main = () => {
-  const [switchState, setSwitchState] = useState(false);
-  // 스위치 상태 변경 함수
-  const handleSwitchChange = (newState: boolean) => {
-    setSwitchState(newState);
-  };
   return (
-    <>
-      <UserAvatar />
-      <UserName />
-      <UserDetails />
-      <MainJobState
-        onSwitchChange={handleSwitchChange}
-        switchState={switchState}
+    <div className="nflex ngap-[20px]">
+      <UserMain
+        profile={""}
+        name={""}
+        department={""}
+        role={""}
+        isWorking={"working"}
+        startTime={""}
+        endTime={""}
       />
-      <UserTime />
-      <TodoList />
-      <UserHeader name="Helpdesku" />
-    </>
+      <div className="nw-[400px] nm-5 nflex nflex-col nitems-center ngap-y-10">
+        <Clock />
+        <Calendar />
+        <TodoList />
+      </div>
+      <div className="nw-[400px] nm-5 nflex njustify-center">
+        <WorkingStatus members={memberDetails} />
+      </div>
+    </div>
   );
 };
 
