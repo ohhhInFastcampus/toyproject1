@@ -24,7 +24,7 @@ const Main = () => {
       />
       <UserTime />
       <TodoList />
-      <UserHeader />
+      <UserHeader name="Helpdesku" />
     </>
   );
 };

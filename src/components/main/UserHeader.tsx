@@ -6,7 +6,7 @@ interface UserProps {
 }
 
 const UserHeader = ({ name }: UserProps) => {
-  
+
     return (
       <div className="nflex nitems-center nbg-blue-100 nrounded-full npx-3 npy-1">
         <Avatar>
