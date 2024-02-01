@@ -1,0 +1,20 @@
+.gallery--detail__container {
+  margin-left: 70px;
+  .gallery--detail__container__title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+
+  }
+
+  .gallery--detail__container__image {
+    padding: 70px 70px 70px 0;
+    box-sizing: border-box;
+  }
+
+  .gallery--detail__container__content {
+    padding-bottom: 50px;
+    min-height: 200px;
+  }
+
+}
