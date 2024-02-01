@@ -4,7 +4,7 @@ import Layout from "@/components/Layout.tsx";
 import Main from "@/templates/main";
 import Gallery from "@/templates/gallery";
 import ErrorPage from "@/templates/error";
-import GalleryDetail from "@/templates/galleryDetail";
+import GalleryDetailPage from "@/containers/galleryDetail";
 
 const router = createBrowserRouter([
     {
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
                 // ]
             },
             {
-                path: "gallery/:id",
-                Component : GalleryDetail
+                path: "gallery/:galleryId",
+                Component : GalleryDetailPage
             },
             {
                 path: "absenceRequest",
