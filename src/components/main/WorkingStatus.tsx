@@ -53,8 +53,10 @@ const WorkingStatus = () => {
   // }, []);
 
   return (
-    <div className="nw-[300px] np-7 nbg-white nrounded-lg nshadow-md nborder-2 ndivide-solid nborder-slate-300">
-      <h1 className="ntext-lg ntext-center nfont-bold nmb-4">근무중인 사람</h1>
+    <div className="nw-[300px] nh-[400px] np-7 nbg-white nrounded-lg nshadow-md nborder-2">
+      <div className="nbg-yellow-200 nrounded-lg nshadow-md np-2 nmb-4">
+        <h1 className="ntext-lg ntext-center nfont-bold">근무중인 사람</h1>
+      </div>
       <h2 className="ntext-left nfont-bold">Core Team</h2>
       <ul className="nmt-4">
         {members.map((member) => (

@@ -11,7 +11,7 @@ const UserHeader = ({ name }: UserProps) => {
       <Avatar>
         <AvatarImage src="/vite.svg" alt="User Profile" className="nbg-white" />
       </Avatar>
-      <Button variant="default" size="s" font="xs" className="nm-1 nml-2">
+      <Button size="s" className="nm-1 nml-2">
         {name}
       </Button>
     </div>
