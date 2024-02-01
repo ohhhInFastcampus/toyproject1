@@ -36,7 +36,7 @@ const router = createBrowserRouter([
             {
                 path: "absenceRequest",
                 // action: loginAction,
-                Component: AbsenceRequest,
+                Component: Main,
             },
             {
                 path: "absenceRequestDetails",
