@@ -7,10 +7,13 @@ import SelectBox from '@/components/SelectBox';
 import RequestDetail from '@/components/absenceRequest/RequestDetail';
 
 interface reqAbsenceType {
+  approver: string;
+  position: string;
+  name: string;
   email : string ,
   date : Date,
   absenceTime : number,
-  reason : string
+  reason : string,
 }
 
 function AbsenceRequest() {
@@ -20,9 +23,12 @@ function AbsenceRequest() {
 
   const [formData, setFormData] = useState<reqAbsenceType>({
     email: '',
+    name: '',
+    position: '',
+    approver: '',
     date: new Date(),
     absenceTime: 0,
-    reason: ''
+    reason: '',
   });
 
 
@@ -43,39 +49,40 @@ function AbsenceRequest() {
     }));
   };
   
+  
   return (
-    <Card>
-    <form onSubmit={handleSubmit}>
-      <CardHeader>
-        <CardTitle>부재 신청</CardTitle>
-      </CardHeader>
-      <CardContent className="grid gap-6">
-        <div className="grid grid-cols-2 gap-4">
-          <RequestDetail type="이름" input="text" />
-          <RequestDetail type="직급" input="title" />
-          <RequestDetail type="결재자" input="approver" />
-          <RequestDetail type="날짜" input="date" />
-          <div className="grid gap-2">
-            <Label htmlFor="request-absence-type">부재신청 타입</Label>
-            <SelectBox defaultValue={''} 
-            selectItem={[
-              {value : "4",name : "반차"}, 
-              {value : "8", name: "연차"}]} 
-              getValue={setValue} />
+    <Card className="nw-[500px] nborder-solid nborder-2 nborder-gray-300">
+      <form onSubmit={handleSubmit}>
+        <CardHeader className="ngrid njustify-items-center">
+          <CardTitle className="njustify-items-center">부재 신청</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="ngrid ngrid-cols-2">
+            <RequestDetail type="이름" input="text" id="name" value={formData.name} onChange={handleChange} />
+            <RequestDetail type="직급" input="title" id="position" value={formData.position} onChange={handleChange} />
+            <RequestDetail type="결재자" input="approver" id="approver" value={formData.approver} onChange={handleChange} />
+            <RequestDetail type="날짜" input="date" id="date" onChange={handleChange} />
+          </div>  
+          <div className="nflex-row ngap-6 np-3">
+              <Label className="nflex nmy-3" htmlFor="request-absence-type">부재신청 타입</Label>
+              <SelectBox defaultValue={''} 
+              selectItem={[
+                {value : "4",name : "반차"}, 
+                {value : "8", name: "연차"}]} 
+                getValue={setValue} />
           </div>
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="reason">부재신청 사유</Label>
-          <Textarea
-            id="reason"
-            placeholder="부재신청 사유를 작성해주세요."
-            onChange={handleChange}
-          />
-        </div>
-      </CardContent>
-      <CardFooter className="justify-between space-x-2">
-        <Button variant="ghost">cancel</Button>
-        <Button>submit</Button>
+          <div className="nflex-row ngap-6 np-3">
+            <Label className="nflex nmy-3" htmlFor="reason">부재신청 사유</Label>
+            <Textarea 
+              id="reason"
+              placeholder="부재신청 사유를 작성해주세요."
+              onChange={handleChange}
+            />
+          </div>
+        </CardContent>
+        <CardFooter className="nflex ngap-6">
+          <Button variant="ghost">cancel</Button>
+          <Button>submit</Button>
         </CardFooter>
       </form>
     </Card>
