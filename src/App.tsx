@@ -5,8 +5,7 @@ import Main from "@/templates/main";
 import Gallery from "@/templates/gallery";
 import ErrorPage from "@/templates/error";
 import GalleryDetail from "@/templates/galleryDetail";
-import AbsenceRequest from "@/templates/absenceRequest";
-import Login from "@/templates/login"
+
 
 const router = createBrowserRouter([
     {
@@ -16,7 +15,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: AbsenceRequest,
+                Component: Main,
             },
             {
                 path: "gallery",
