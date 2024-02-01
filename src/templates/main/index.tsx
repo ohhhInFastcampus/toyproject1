@@ -1,22 +1,22 @@
-import { useState } from "react";
-import MainJobState from "@/components/main/MainJobState";
 import UserMain from "@/components/UserMain";
+import { Calendar } from "@/components/main/Calendar";
+import { Clock } from "@/components/main/Clock";
+import { TodoList } from "@/components/main/TodoList";
+import WorkingStatus from "@/components/main/WorkingStatus";
 
 const Main = () => {
-  const [switchState, setSwitchState] = useState(false);
-  // 스위치 상태 변경 함수
-  const handleSwitchChange = (newState: boolean) => {
-    setSwitchState(newState);
-  };
   return (
-    <>
-
-      <MainJobState
-        onSwitchChange={handleSwitchChange}
-        switchState={switchState}
-      />
+    <div className="nflex ngap-[20px] ">
       <UserMain />
-    </>
+      <div className="nw-[400px] nm-2 nflex nflex-col nitems-center ngap-y-10">
+        <Clock />
+        <Calendar />
+        <TodoList />
+      </div>
+      <div className="nw-[400px]">
+        <WorkingStatus />
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import { useState } from "react";
 
-interface MemberDetail{
+interface MemberDetail {
   name: string;
   department: string;
   role: string;
@@ -10,7 +10,13 @@ interface MemberDetail{
 
 //데이터 예시
 const memberDetails: MemberDetail[] = [
-  { name: '정지혜', department: 'Core Team', role: 'lead', starttime: '09:00', endtime: '18:00' }
+  {
+    name: "정지혜",
+    department: "Core Team",
+    role: "lead",
+    starttime: "09:00",
+    endtime: "18:00",
+  },
 ];
 
 const UserDetails = () => {
@@ -21,7 +27,7 @@ const UserDetails = () => {
   //   const fetchData = async () => {
   //     try {
   //       const response = await axios.get('/api/team-members');
-  //       setMembers(response.data); 
+  //       setMembers(response.data);
   //     } catch (error) {
   //       console.error('Error fetching data:', error);
   //     }
@@ -32,19 +38,15 @@ const UserDetails = () => {
 
   return (
     <div>
-  {members.map((member, index) => (
-    <div key={index} className="mb-2">
-      <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center nfont-semibold">
-        <div className="nmr-10">
-          부서: {member.department}
+      {members.map((member, index) => (
+        <div key={index} className="mb-2">
+          <div className="nflex nflex-row njustify-center nbg-white nrounded-full np-3 nitems-center nfont-semibold">
+            <div className="nmr-10">부서: {member.department}</div>
+            <div>직급: {member.role}</div>
+          </div>
         </div>
-        <div>
-          직급: {member.role}
-        </div>
-      </div>
+      ))}
     </div>
-  ))}
-</div>
   );
 };
 

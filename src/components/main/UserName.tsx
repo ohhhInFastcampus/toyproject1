@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import { useState } from "react";
 
-interface MemberDetail{
+interface MemberDetail {
   name: string;
   department: string;
   role: string;
@@ -10,7 +10,13 @@ interface MemberDetail{
 
 //데이터 예시
 const memberDetails: MemberDetail[] = [
-  { name: '정지혜', department: 'Core Team', role: 'lead', starttime: '09:00', endtime: '18:00' }
+  {
+    name: "정지혜",
+    department: "Core Team",
+    role: "lead",
+    starttime: "09:00",
+    endtime: "18:00",
+  },
 ];
 
 const UserName = () => {
@@ -21,7 +27,7 @@ const UserName = () => {
   //   const fetchData = async () => {
   //     try {
   //       const response = await axios.get('/api/team-members');
-  //       setMembers(response.data); 
+  //       setMembers(response.data);
   //     } catch (error) {
   //       console.error('Error fetching data:', error);
   //     }
@@ -31,7 +37,7 @@ const UserName = () => {
   // }, []);
 
   return (
-    <div className="nflex nflex-row nbg-blue-100 nrounded-xl np-3 nitems-center nfont-semibold">
+    <div className="nflex nflex-row nbg-white nrounded-full np-3 njustify-center nitems-center nfont-semibold">
       {member.map((member, index) => (
         <div key={index}>이름: {member.name}</div>
       ))}

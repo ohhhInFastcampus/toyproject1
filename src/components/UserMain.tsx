@@ -4,7 +4,6 @@ import UserName from "@/components/main/UserName";
 import UserDetails from "@/components/main/UserDetails";
 import UserTime from "@/components/main/UserTime";
 import { UserAvatar } from "@/components/main/UserAvatar";
-import { TodoList } from "@/components/main/TodoList";
 
 const UserMain = () => {
   const [switchState, setSwitchState] = useState(false);
@@ -13,17 +12,30 @@ const UserMain = () => {
     setSwitchState(newState);
   };
   return (
-    <div>
-      <UserAvatar />
-      <UserName />
-      <UserDetails />
-      <MainJobState
-        onSwitchChange={handleSwitchChange}
-        switchState={switchState}
-      />
-      <UserTime />
-      <TodoList />
-    </div>
+    <>
+      <div className="nw-[400px]">
+        <div className="nflex nflex-col nrounded-3xl nbg-blue-200 np-8 ngap-y-8 ">
+          <div className="nself-center ">
+            <UserAvatar />
+          </div>
+          <div>
+            <UserName />
+          </div>
+          <div className="nmb-6">
+            <UserDetails />
+          </div>
+          <div className="nmb-6">
+            <MainJobState
+              onSwitchChange={handleSwitchChange}
+              switchState={switchState}
+            />
+          </div>
+          <div>
+            <UserTime />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
