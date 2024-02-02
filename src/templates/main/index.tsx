@@ -8,7 +8,7 @@ import { MemberDetailType } from "@/components/main/types";
 
 const Main = (props: MemberDetailType) => {
   return (
-    <div className="nflex ngap-[40px] nmt-[40px] nmb-[40px]">
+    <div className="nflex ngap-[40px]">
       <UserMain {...props} />
       <div className="nw-[400px] nm-5 nflex nflex-col nitems-center ngap-y-10">
         <Clock />
