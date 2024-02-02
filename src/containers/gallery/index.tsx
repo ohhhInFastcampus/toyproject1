@@ -1,19 +1,26 @@
-import Gallery from "@/templates/gallery";
 import { db } from '@/Firebase.ts';
-import { doc, getDocs ,collection } from 'firebase/firestore';
-import {mockCardList} from "@/mocks/galleryList.ts";
-
-import {useEffect, useState} from "react";
+import { getDocs ,collection } from 'firebase/firestore';
+import {useEffect} from "react";
 const GalleryPage = () => {
-    const fruitCollection = collection(db, 'gallery')
-    const [fruits, setFruits] = useState([])
+    const gallery = collection(db, "gallery");
+    //TODO 추후 수정 예정 
+    const test = async () => {
+        const docSnap = await getDocs(gallery);
+        // const addDocs = await addDoc(collection(db,"gallery"),{
+        //     id: "test in web",
+        //     image: "Test",
+        //     title: "Test"
+        // });
+        // console.log(addDocs);
+        docSnap.forEach((doc) => {
+            // console.log(doc);
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
+    }
     useEffect(() => {
-        async function getFruits() {
-            const data = await getDocs(fruitCollection)
-            setFruits(data.docs);
-        }
-        getFruits()
-    }, [])
+        test();
+    }, []);
     return (
         // <Gallery list={mockCardList} />
         <div>
