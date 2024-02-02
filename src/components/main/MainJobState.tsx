@@ -18,8 +18,8 @@ export default function MainJobState({
             switchState={switchState}
           />
         </div>
-        <div className="ngrow ntext-center font-light  ntracking-[0.25rem] font-Inter">
-          {switchState ? <p>#Working</p> : <p># ZZZ...</p>}
+        <div className="ngrow ntext-center nfont-bold  ntracking-[0.25rem] font-Inter">
+          {switchState ? <p>Active</p> : <p>Away</p>}
         </div>
       </div>
     </>
