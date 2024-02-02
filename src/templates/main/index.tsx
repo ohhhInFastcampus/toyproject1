@@ -4,8 +4,10 @@ import { Calendar } from "@/components/main/Calendar";
 import { TodoList } from "@/components/main/TodoList";
 import WorkingStatus from "@/components/main/WorkingStatus";
 import { memberDetails } from "@/mocks/teamList";
+import {getUserList} from "@/utils/GetUserList.ts";
 
 const Main = () => {
+    getUserList()
   return (
     <div className="nflex ngap-[20px]">
       <UserMain
