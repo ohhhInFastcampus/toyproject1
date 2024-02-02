@@ -6,6 +6,7 @@ import GalleryPage from "@/containers/gallery";
 import ErrorPage from "@/templates/error";
 import GalleryDetailPage from "@/containers/galleryDetail";
 
+
 const router = createBrowserRouter([
     {
         path: "/",
