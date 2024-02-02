@@ -1,17 +1,19 @@
 import './App.css';
 import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
-import Layout from "@/components/Layout.tsx";
 import Main from "@/templates/main";
 import GalleryPage from "@/containers/gallery";
 import ErrorPage from "@/templates/error";
 import GalleryDetailPage from "@/containers/galleryDetail";
+import Login from "@/templates/login";
+import {PrivateRoute} from "@/route/PrivateRoute.tsx";
+
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         errorElement: <ErrorPage/>,
-        Component: Layout,
+        Component: PrivateRoute,
         children: [
             {
                 index: true,
@@ -48,13 +50,13 @@ const router = createBrowserRouter([
     {
         path: "login",
         // action: loginAction,
-        Component: Main,
+        Component: Login,
     },
     {
         path: "/logout",
         async action() {
             //TODO cookie delete
-            return redirect("/");
+            return redirect("/login");
         },
     },
 ]);
