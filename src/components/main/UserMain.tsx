@@ -2,19 +2,9 @@ import { useState } from "react";
 import MainJobState from "@/components/main/MainJobState";
 import { UserAvatar } from "@/components/main/UserAvatar";
 import WhiteBox from "@/components/main/WhiteBox";
-import { memberDetails } from "@/mocks/teamList";
 import { MemberDetailType } from "./types";
 
-//작업후 삭제예정
-const User: MemberDetailType = memberDetails[0];
-
-const UserMain = ({
-  name,
-  department,
-  role,
-  startTime,
-  endTime,
-}: MemberDetailType) => {
+const UserMain = (props: MemberDetailType) => {
   const [switchState, setSwitchState] = useState(false);
   // 스위치 상태 변경 함수
   const handleSwitchChange = (newState: boolean) => {
@@ -24,14 +14,14 @@ const UserMain = ({
   return (
     <>
       <div className="nw-[400px]">
-        <div className="nflex nflex-col nrounded-3xl nbg-blue-200 np-8 ngap-y-8 ">
+        <div className="nflex nflex-col nrounded-3xl nbg-blue-200 np-8 ngap-y-8 nshadow-md nborder-2">
           <div className="nself-center ">
-            <UserAvatar {...User} />
+            <UserAvatar {...props} />
           </div>
-          <WhiteBox className="">이름: {name}</WhiteBox>
+          <WhiteBox className="">이름: {props.name}</WhiteBox>
           <WhiteBox className="nmb-6">
-            <div className="nmr-10">부서: {department}</div>
-            <div>직급: {role}</div>
+            <div className="nmr-10">부서: {props.department}</div>
+            <div>직급: {props.role}</div>
           </WhiteBox>
           <div className="nmb-6">
             <MainJobState
@@ -40,8 +30,8 @@ const UserMain = ({
             />
           </div>
           <WhiteBox>
-            <div className="nmr-10">시작 시간: {startTime}</div>
-            <div>종료 시간: {endTime}</div>
+            <div className="nmr-10">시작 시간: {props.startTime}</div>
+            <div>종료 시간: {props.endTime}</div>
           </WhiteBox>
         </div>
       </div>

@@ -11,15 +11,15 @@ export default function MainJobState({
 }: MainSwitchModalProps) {
   return (
     <>
-      <div className="nflex nflex-row nbg-yellow-300 nitems-center np-4 nrounded-full ntext-2xl ">
+      <div className="nflex nflex-row nbg-yellow-200 nitems-center np-4 nrounded-full ntext-2xl ">
         <div className="">
           <MainSwitchModal
             onSwitchChange={onSwitchChange}
             switchState={switchState}
           />
         </div>
-        <div className="ngrow ntext-center font-light  ntracking-[0.25rem] font-Inter">
-          {switchState ? <p>#Working</p> : <p># ZZZ...</p>}
+        <div className="ngrow ntext-center nfont-bold  ntracking-[0.25rem] font-Inter">
+          {switchState ? <p>Active</p> : <p>Away</p>}
         </div>
       </div>
     </>
