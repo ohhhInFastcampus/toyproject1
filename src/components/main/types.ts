@@ -7,3 +7,8 @@ export interface MemberDetailType {
   startTime: string;
   endTime: string;
 }
+
+//TODO 데이터 타입 교정 필요
+export interface MemberDetailTypes extends MemberDetailType {
+  email: string;
+}
