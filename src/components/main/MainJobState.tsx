@@ -11,7 +11,7 @@ export default function MainJobState({
 }: MainSwitchModalProps) {
   return (
     <>
-      <div className="nflex nflex-row nbg-yellow-300 nitems-center np-4 nrounded-full ntext-2xl ">
+      <div className="nflex nflex-row nbg-yellow-200 nitems-center np-4 nrounded-full ntext-2xl ">
         <div className="">
           <MainSwitchModal
             onSwitchChange={onSwitchChange}

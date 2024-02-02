@@ -14,7 +14,7 @@ const UserMain = (props: MemberDetailType) => {
   return (
     <>
       <div className="nw-[400px]">
-        <div className="nflex nflex-col nrounded-3xl nbg-blue-200 np-8 ngap-y-8 ">
+        <div className="nflex nflex-col nrounded-3xl nbg-blue-200 np-8 ngap-y-8 nshadow-md nborder-2">
           <div className="nself-center ">
             <UserAvatar {...props} />
           </div>
