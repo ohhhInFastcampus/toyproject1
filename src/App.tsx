@@ -1,20 +1,18 @@
-import "./App.css";
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from "react-router-dom";
-import Layout from "@/components/Layout.tsx";
-import MainPage from "@/containers/main";
+import './App.css';
+import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
 import GalleryPage from "@/containers/gallery";
 import ErrorPage from "@/templates/error";
 import GalleryDetailPage from "@/containers/galleryDetail";
+import Login from "@/templates/login";
+import {PrivateRoute} from "@/route/PrivateRoute.tsx";
+import MainPage from "@/containers/main";
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <ErrorPage />,
-    Component: Layout,
+    errorElement: <ErrorPage/>,
+    Component: PrivateRoute,
     children: [
       {
         index: true,
@@ -34,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "gallery/:galleryId",
-        Component: GalleryDetailPage,
+        Component : GalleryDetailPage
       },
       {
         path: "absenceRequest",
@@ -51,25 +49,20 @@ const router = createBrowserRouter([
   {
     path: "login",
     // action: loginAction,
-    Component: MainPage,
+    Component: Login,
   },
   {
     path: "/logout",
     async action() {
       //TODO cookie delete
-      return redirect("/");
+      return redirect("/login");
     },
   },
 ]);
 
 function App() {
   return (
-    <>
-      <RouterProvider
-        router={router}
-        fallbackElement={<p>Initial Load...</p>}
-      />
-    </>
+      <><RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} /></>
   );
 }
 
