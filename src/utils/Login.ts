@@ -2,6 +2,7 @@ import {getDoc, doc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
 import {reqLoginType} from "@/templates/login/type.ts";
 import {setJsonToString, setLocalStorage} from "@/utils/SettingStorage.ts";
+import {MemberDetailType, MemberDetailTypes} from "@/components/main/types.ts";
 
 export const login = async ({id, password}:reqLoginType) => {
     if(id.length === 0) {
@@ -14,7 +15,10 @@ export const login = async ({id, password}:reqLoginType) => {
     const result = await getDoc(searchUser);
     const data = result.data();
     if(data !== undefined) {
-        setLocalStorage("user",setJsonToString(data));
+        let obj : MemberDetailTypes = {
+            ...data as MemberDetailType , email : id
+        }
+        setLocalStorage("user",setJsonToString(obj));
     } else {
         throw new Error("유저가 존재하지 않습니다. 관리부서에 문의해주세요.");
     }
