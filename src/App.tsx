@@ -7,7 +7,6 @@ import {
 import Layout from "@/components/Layout.tsx";
 import MainPage from "@/containers/main";
 import GalleryPage from "@/containers/gallery";
-import MainPage from "@/containers/main";
 import ErrorPage from "@/templates/error";
 import GalleryDetailPage from "@/containers/galleryDetail";
 
