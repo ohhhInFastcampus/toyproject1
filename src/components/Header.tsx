@@ -18,15 +18,15 @@ const Gnb = () => {
   const gnbList: GnbListType[] = [
     {
       title: "부재신청",
-      link: "#",
+      link: "absenceRequest",
     },
     {
       title: "갤러리",
-      link: "#",
+      link: "gallery",
     },
     {
       title: "부재신청내역",
-      link: "#",
+      link: "absenceRequestDetails",
     },
   ];
   return (
