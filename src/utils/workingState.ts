@@ -1,7 +1,8 @@
 import {doc, getDoc, setDoc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
-import {getLocalStorage} from "@/utils/SettingStorage.ts";
+import {getLocalStorage} from "@/utils/settingStorage.ts";
 import {MemberDetailTypes} from "@/components/main/types.ts";
+import {ParsingDateToString} from "@/utils/parsingDate.ts";
 
 const user: MemberDetailTypes = getLocalStorage("user");
 const workingState = doc(db, "working", user.email);
@@ -26,8 +27,8 @@ export const getWorkingState = async (): Promise<resWorkingStateType> => {
 }
 export const editWorkingState = ({startWorking, endWorking}: reqWorkingStateType): boolean => {
     let isSuccess = false;
-    let startWorkingDate = changeDateToTimeStamp(startWorking);
-    let endWorkingDate = changeDateToTimeStamp(endWorking);
+    let startWorkingDate = ParsingDateToString(startWorking);
+    let endWorkingDate = ParsingDateToString(endWorking);
     setDoc(workingState, {startWorking: startWorkingDate, endWorking: endWorkingDate}, {merge: true}).then(() => {
         isSuccess = true;
         return isSuccess;
@@ -38,7 +39,3 @@ export const editWorkingState = ({startWorking, endWorking}: reqWorkingStateType
     return isSuccess;
 }
 
-export const changeDateToTimeStamp = (date: Date) => {
-    date.setHours(date.getHours() + 9);
-    return date.toISOString().replace('T', ' ').substring(0, 19);
-}

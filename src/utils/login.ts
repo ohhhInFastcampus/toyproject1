@@ -1,7 +1,7 @@
 import {getDoc, doc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
 import {reqLoginType} from "@/templates/login/type.ts";
-import {setJsonToString, setLocalStorage} from "@/utils/SettingStorage.ts";
+import {setJsonToString, setLocalStorage} from "@/utils/settingStorage.ts";
 import {MemberDetailType, MemberDetailTypes} from "@/components/main/types.ts";
 
 export const login = async ({id, password}:reqLoginType) => {
