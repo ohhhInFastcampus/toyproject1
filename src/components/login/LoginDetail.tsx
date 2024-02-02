@@ -11,8 +11,9 @@ function LoginDetail(props: LoginDetailType) {
   };
 
   return (
-    <div className="grid gap-2">
-      <Input
+    <div className="np-1">
+      <Input  
+        className="njustify-items-center np-2 nw-60 nrounded-sm nborder-2 nborder-stone-300 np-1 nmt-1"
         id={id}
         type={type}
         placeholder={placeholder}
