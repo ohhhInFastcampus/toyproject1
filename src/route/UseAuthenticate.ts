@@ -1,4 +1,4 @@
-import {getLocalStorage} from "@/utils/SettingStorage.ts";
+import {getLocalStorage} from "@/utils/settingStorage.ts";
 
 export const useAuthenticate = (): boolean => {
     const userData = getLocalStorage("user");
