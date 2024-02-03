@@ -3,7 +3,8 @@ import img from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
 import LoginDetail from "@/components/login/LoginDetail";
-
+import {login} from "@/utils/login.ts";
+import { useNavigate } from "react-router-dom";
 interface reqLoginType {
   id : string,
   password : string,
@@ -12,14 +13,22 @@ interface reqLoginType {
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
+  const navigate = useNavigate();
+const handleLogin = async () => {
     const loginData: reqLoginType = {
-      id: email,
-      password: password,
+        id: email,
+        password: password,
     };
     console.log('Login Data:', loginData);
-  };
+    await login(loginData).then(()=>{
+      navigate("/");
+    }).catch((reason)=>{
+        if(reason instanceof Error) {
+            console.log(reason.message,"reason");
+        }
+
+    })
+};
 
   return (
     <Card className="nflex njustify-center">
