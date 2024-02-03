@@ -3,11 +3,11 @@ import { Clock } from "@/components/main/Clock";
 import { Calendar } from "@/components/main/Calendar";
 import { TodoList } from "@/components/main/TodoList";
 import WorkingStatus from "@/components/main/WorkingStatus";
-import { MemberDetailType } from "@/components/main/types";
+import {MemberDetailType, MemberDetailTypes} from "@/components/main/types";
 
 interface MainPageType {
   user: MemberDetailType;
-  working: MemberDetailType[];
+  working: MemberDetailTypes[];
 }
 const Main = ({ user, working }: MainPageType) => {
   return (
