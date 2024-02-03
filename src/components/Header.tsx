@@ -1,5 +1,7 @@
 import img from "@/assets/logo.png";
 import { UserHeader } from "./main/UserHeader";
+import {MemberDetailTypes} from "@/components/main/types.ts";
+import {getLocalStorage} from "@/utils/settingStorage.ts";
 
 interface GnbListType {
   title: string;
@@ -53,24 +55,17 @@ const Gnb = () => {
   );
 };
 
-const User = () => {
+const User = (user: MemberDetailTypes) => {
   //TODO 컴포넌트는 데이터 연결 시 컴포넌트 생성 예정
   return (
     <div>
-      <UserHeader
-        name="정지혜"
-        profile={""}
-        department={""}
-        role={""}
-        isWorking={"working"}
-        startTime={""}
-        endTime={""}
-      />
+      <UserHeader {...user}/>
     </div>
   );
 };
 
 const Header = () => {
+  const user: MemberDetailTypes = getLocalStorage("user");
   return (
     <header
       className={
@@ -79,7 +74,7 @@ const Header = () => {
     >
       <Logo />
       <Gnb />
-      <User />
+      <User {...user}/>
     </header>
   );
 };
