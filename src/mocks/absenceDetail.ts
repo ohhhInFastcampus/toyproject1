@@ -10,7 +10,7 @@ interface SelectContentsItem {
 }
 
 // 목업 데이터
-const headers: string[] = ["신청일", "부재 유형", "시작일", "종료일", "상태"];
+const headers: string[] = ["이름", "날짜", "연차/반차", "결제자"];
 const tableData: MockData = {
   1: ["2022-01-01", "개인 사유", "2022-01-02", "2022-01-05", "승인"],
   2: ["2022-02-15", "공식 출장", "2022-02-16", "2022-02-20", "대기중"],
@@ -27,9 +27,8 @@ const tableData: MockData = {
 const defaultValue: string = "전체";
 const selectItem: SelectContentsItem[] = [
   { label: "전체", value: "all", name: "전체" },
-  { label: "승인", value: "approved", name: "승인" },
-  { label: "대기중", value: "pending", name: "대기중" },
-  { label: "거절", value: "rejected", name: "거절" },
+  { label: "반차", value: "반차", name: "반차" },
+  { label: "연차", value: "연차", name: "연차" },
 ];
 
 export { headers, tableData, defaultValue, selectItem };
