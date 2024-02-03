@@ -1,4 +1,4 @@
-import {collection, getDocs} from "firebase/firestore";
+import {collection, doc, getDoc, getDocs} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
 import {GalleryType} from "@/components/gallery/types.ts";
 
@@ -22,6 +22,16 @@ export const getGalleryList = async () => {
     return list;
 }
 
-// export const getGalleryDetail = async (id : string) => {
-//
-// }
+export const getGalleryDetail = async (id: string) => {
+    const searchGalleryDetail = doc(db, "gallery", id);
+    const getGalleryDetailDoc = await getDoc(searchGalleryDetail);
+    const result = getGalleryDetailDoc.data();
+    if (result !== undefined) {
+        let obj: GalleryType = {
+            ...result as GalleryType, id: id
+        }
+        return obj;
+    } else {
+        throw new Error("페이지를 찾을 수 없습니다.");
+    }
+}
