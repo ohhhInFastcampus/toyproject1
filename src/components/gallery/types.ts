@@ -1,9 +1,6 @@
-export interface CardMockType {
+export interface GalleryType {
     img: string,
     title: string,
-    id: string
-}
-
-export interface CardDetailMockType extends CardMockType{
+    id: string,
     content : string
 }
