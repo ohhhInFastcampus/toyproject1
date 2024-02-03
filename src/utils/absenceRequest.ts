@@ -1,6 +1,6 @@
 import {MemberDetailTypes} from "@/components/main/types.ts";
 import {getLocalStorage} from "@/utils/settingStorage.ts";
-import {collection, doc, getDocs, setDoc} from "firebase/firestore";
+import {collection, getDocs, addDoc, query, where} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
 import {ParsingDateToString} from "@/utils/parsingDate.ts";
 
@@ -19,7 +19,7 @@ interface reqAbsenceType {
 export interface reqAbsenceToDB {
     name: string,
     type: string,
-    approve: string,
+    approver: string,
     date: string,
     department: string,
     reason: string,
@@ -28,23 +28,34 @@ export interface reqAbsenceToDB {
 
 const user: MemberDetailTypes = getLocalStorage("user");
 export const postAbsenceRequest = async (request: reqAbsenceType) => {
-    const absenceRequest = doc(db, "absenceRequestDetails", user.email);
+    const absenceRequest = collection(db, "absenceRequestDetails");
     let setData: reqAbsenceToDB = {
         name: request.name,
         type: request.position,
-        approve: request.approver,
+        approver: request.approver,
         date: ParsingDateToString(request.date),
         department: user.department,
         reason: request.reason,
         absenceTime: request.absenceTime,
     }
-    await setDoc(absenceRequest, setData);
+    await addDoc(absenceRequest, setData);
     return setData;
 }
 export const getAbsenceRequestDetails = async (): Promise<reqAbsenceToDB[]> => {
     let list: reqAbsenceToDB[] = [];
     const absenceRequestCollection = collection(db, "absenceRequestDetails");
     const absenceRequestList = await getDocs(absenceRequestCollection);
+    absenceRequestList.forEach((item) => {
+        list.push(item.data() as reqAbsenceToDB);
+    });
+    return list;
+}
+
+export const getAbsenceRequestDetailsFilter = async (key: string,filter:string): Promise<reqAbsenceToDB[]> => {
+    let list: reqAbsenceToDB[] = [];
+    const absenceRequestCollection = collection(db, "absenceRequestDetails");
+    const filtering = query(absenceRequestCollection, where(key,'==',filter))
+    const absenceRequestList = await getDocs(filtering);
     absenceRequestList.forEach((item) => {
         list.push(item.data() as reqAbsenceToDB);
     });
