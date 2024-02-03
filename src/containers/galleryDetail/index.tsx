@@ -1,14 +1,25 @@
 import GalleryDetail from "@/templates/galleryDetail";
-import {mockCardList} from "@/mocks/galleryList.ts";
 import {useParams} from "react-router-dom";
-
+import {useEffect, useState} from "react";
+import {getGalleryDetail} from "@/utils/gallery.ts";
+import {GalleryType} from "@/components/gallery/types.ts";
+const resetDetailPage:GalleryType = {
+    id: '',
+    img: '',
+    content: '',
+    title: ''
+} ;
 const GalleryDetailPage = () => {
     const {galleryId} = useParams();
-    const galleyDetailItem = mockCardList.find((value) => {
-        return value.id === galleryId as string;
-    })
+
+    const [galleryDetail, setGalleryDetail] = useState<GalleryType>(resetDetailPage);
+    useEffect(() => {
+        getGalleryDetail(galleryId!).then((item) => {
+            setGalleryDetail(item)
+        })
+    }, [])
     return (
-        <GalleryDetail {...galleyDetailItem!} />
+        <GalleryDetail {...galleryDetail} />
     )
 }
 export default GalleryDetailPage;
