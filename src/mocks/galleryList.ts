@@ -1,6 +1,6 @@
-import {CardDetailMockType} from "@/components/gallery/types.ts";
+import {GalleryType} from "@/components/gallery/types.ts";
 
-export const mockCardList: CardDetailMockType[] = [
+export const mockCardList: GalleryType[] = [
     {
         img: "https://cdn.gameple.co.kr/news/photo/202308/206852_216550_1437.jpg",
         title: "게시글1",
