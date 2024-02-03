@@ -1,7 +1,7 @@
-import {CardDetailMockType} from "@/components/gallery/types.ts";
+import {GalleryType} from "@/components/gallery/types.ts";
 import "./galleryDetail.scss";
 
-const galleryDetail = ({title, img, id, content}: CardDetailMockType) => {
+const galleryDetail = ({title, img, id, content}: GalleryType) => {
     return (
         <article className={"gallery--detail__container"}>
             <h1 className={"gallery--detail__container__title"}>{title}</h1>

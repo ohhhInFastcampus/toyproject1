@@ -1,7 +1,7 @@
-import {CardMockType} from "@/components/gallery/types.ts";
+import {GalleryType} from "@/components/gallery/types.ts";
 import {Link} from "react-router-dom";
 
-const Card = ({img, title, id} : CardMockType) => {
+const Card = ({img, title, id} : GalleryType) => {
     return (
         <Link to={`${id}`} className={"nblock nw-full nbg-white nrounded-xl noverflow-hidden"}>
                 <img className={'nw-full nblock'} src={img} alt={title}/>
