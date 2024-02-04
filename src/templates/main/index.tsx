@@ -9,12 +9,13 @@ interface MainPageType {
   user: MemberDetailType;
   working: MemberDetailTypes[];
     handleSwitchChange :  (checked: boolean) => void
-    switchState : boolean
+    switchState : boolean,
+    settingWorkingStatus : ()=>void
 }
-const Main = ({ user, working ,handleSwitchChange,switchState}: MainPageType) => {
+const Main = ({ user, working ,handleSwitchChange,switchState,settingWorkingStatus}: MainPageType) => {
   return (
     <div className="nflex ngap-[40px]">
-      <UserMain user={user} handleSwitchChange={handleSwitchChange} switchState={switchState} />
+      <UserMain user={user} handleSwitchChange={handleSwitchChange} switchState={switchState}  settingWorkingStatus={settingWorkingStatus}/>
       <div className="nw-[400px] nm-5 nflex nflex-col nitems-center ngap-y-10">
         <Clock />
         <Calendar />
