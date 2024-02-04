@@ -20,31 +20,36 @@ export default function AbsenceRequestDetailsContainer() {
   const [absenceRequestList,setAbsenceRequestList] = useState<MockData>({})
   // selectedValue 상태를 업데이트하는 함수. 현재 이 함수는 AbsenceRequestDetails 컴포넌트로 전달되고 있음.
   const [value, getValue] = useState('');
+  const filterData =  async (key: string, value : string) => {
+    if(key.length === 0) {
+      let newList = absenceRequestList;
+      const response = await getAbsenceRequestDetails();
+      response.map((item,index)=>{
+        let arr:MockData = {
+          [index] : [item.name, item.date, item.position,parsingAbsenceTimeToString(item.absenceTime) , item.approver ]
+        }
+        newList = {...newList, ...arr};
+      })
+      setAbsenceRequestList(newList);
+      console.log(newList,"newList")
+    } else {
+      const response = await getAbsenceRequestDetailsFilter(key, value);
+      let newList  : MockData = {};
+      response.map((item, index)=>{
+        let arr:MockData = {
+          [index] : [item.name, item.date, item.position,parsingAbsenceTimeToString(item.absenceTime) , item.approver ]
+        }
+        newList = {...newList, ...arr};
+      })
+      setAbsenceRequestList(newList);
+      console.log(newList,"newList in ")
+    }
+  }
   useEffect(() => {
     if(value !== "all") {
-      getAbsenceRequestDetailsFilter('absenceTime', value).then((list)=>{
-        let newList  : MockData = {};
-        list.map((item,index)=>{
-          let arr:MockData = {
-            [index] : [item.name, item.date, item.position,parsingAbsenceTimeToString(item.absenceTime) , item.approver ]
-          }
-          newList = {...newList, ...arr};
-        })
-        setAbsenceRequestList(newList);
-        console.log(newList,"newList in ")
-      });
+      filterData('absenceTime',value)
     } else {
-      getAbsenceRequestDetails().then((list)=>{
-        let newList = absenceRequestList;
-        list.map((item,index)=>{
-          let arr:MockData = {
-            [index] : [item.name, item.date, item.position,parsingAbsenceTimeToString(item.absenceTime) , item.approver ]
-          }
-          newList = {...newList, ...arr};
-        })
-        setAbsenceRequestList(newList);
-        console.log(newList,"newList")
-      })
+      filterData('',value)
     }
   }, [value]);
   useEffect(()=>{

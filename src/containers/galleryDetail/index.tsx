@@ -13,10 +13,12 @@ const GalleryDetailPage = () => {
     const {galleryId} = useParams();
 
     const [galleryDetail, setGalleryDetail] = useState<GalleryType>(resetDetailPage);
+    const getData = async () => {
+        const response = await getGalleryDetail(galleryId!);
+        setGalleryDetail(response);
+    }
     useEffect(() => {
-        getGalleryDetail(galleryId!).then((item) => {
-            setGalleryDetail(item)
-        })
+        getData();
     }, [])
     return (
         <GalleryDetail {...galleryDetail} />

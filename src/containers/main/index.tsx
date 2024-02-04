@@ -14,43 +14,40 @@ const MainPage = () => {
   const handleSwitchChange = (newState: boolean) => {
     setSwitchState(newState);
   };
-  const getUser = () => {
-    getUserList().then((item)=>{
-      setUserList(item)
-    })
+  const getUser = async () => {
+    const response = await getUserList();
+    setUserList(response);
   }
-  const settingWorkingStatus = () => {
+  const settingWorkingStatus = async () => {
     if(switchState) {
       // 시작시간 세팅
-      editWorkingState({
+      const response = await editWorkingState({
         startWorking: parsingDateToString(new Date()),
         endWorking : parsingDateToString(new Date("1999-01-01 00:00:00")),
         email: user.email,
         isWorking :switchState
-      }).then((res)=>{
-        let newUser:MemberDetailTypes = {...user};
-        newUser.startTime = res.startWorking;
-        newUser.endTime = res.endWorking;
-        newUser.isWorking = switchState;
-        setLocalStorage('user',setJsonToString(newUser));
-        setUser(newUser)
-        getUser();
       })
+      let newUser:MemberDetailTypes = {...user};
+      newUser.startTime = response.startWorking;
+      newUser.endTime = response.endWorking;
+      newUser.isWorking = switchState;
+      setLocalStorage('user',setJsonToString(newUser));
+      setUser(newUser)
+      await getUser();
     } else {
       // 끝난시간 세팅
-      editWorkingState({
+      const response = await editWorkingState({
         startWorking: user.startTime,
         endWorking : parsingDateToString(new Date()),
         email: user.email,
         isWorking :switchState
-      }).then((res)=>{
-        let newUser:MemberDetailTypes = {...user};
-        newUser.startTime = res.startWorking;
-        newUser.endTime = res.endWorking;
-        setLocalStorage('user',setJsonToString(newUser));
-        setUser(newUser);
-        getUser();
       })
+      let newUser:MemberDetailTypes = {...user};
+      newUser.startTime = response.startWorking;
+      newUser.endTime = response.endWorking;
+      setLocalStorage('user',setJsonToString(newUser));
+      setUser(newUser);
+      await getUser();
     }
   }
   useEffect(()=>{
