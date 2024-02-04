@@ -13,7 +13,7 @@ interface AbsenceRequestType {
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void,
     setValue: React.Dispatch<React.SetStateAction<string>>,
     handleTimeClick: (time: string) => void,
-    showButtons: boolean
+    value : string
 }
 
 function AbsenceRequest({
@@ -22,7 +22,7 @@ function AbsenceRequest({
                             handleChange,
                             setValue,
                             handleTimeClick,
-                            showButtons
+                            value
                         }: AbsenceRequestType) {
 
 
@@ -60,12 +60,12 @@ function AbsenceRequest({
                                 {value: "8", name: "연차"}]}
                             getValue={setValue}/>
                     </div>
-                    {showButtons && (
+                    {value === "4" ?
                         <div className="nflex ngap-3 np-3">
                             <Button type="button" onClick={() => handleTimeClick("오전")}>오전</Button>
                             <Button type="button" onClick={() => handleTimeClick("오후")}>오후</Button>
-                        </div>
-                    )}
+                        </div> : <></>
+                    }
                     <div className="nflex-row ngap-6 np-3">
                         <Label className="nflex nmy-3" htmlFor="reason">부재신청 사유</Label>
                         <Textarea
