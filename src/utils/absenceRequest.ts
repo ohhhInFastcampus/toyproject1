@@ -2,19 +2,10 @@ import {MemberDetailTypes} from "@/components/main/types.ts";
 import {getLocalStorage} from "@/utils/settingStorage.ts";
 import {collection, getDocs, addDoc, query, where} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
-import {ParsingDateToString} from "@/utils/parsingDate.ts";
+import {reqAbsenceType} from "@/templates/absenceRequest/types.ts";
 
 //TODO 연차요청 인터페이스 조정 필요
-interface reqAbsenceType {
-    approver: string;
-    position: string;
-    name: string;
-    email: string,
-    date: Date,
-    absenceTime: number,
-    halfDayTime: string,
-    reason: string,
-}
+
 
 export interface reqAbsenceToDB {
     name: string,
@@ -33,7 +24,7 @@ export const postAbsenceRequest = async (request: reqAbsenceType) => {
         name: request.name,
         type: request.position,
         approver: request.approver,
-        date: ParsingDateToString(request.date),
+        date: request.date,
         department: user.department,
         reason: request.reason,
         absenceTime: request.absenceTime,

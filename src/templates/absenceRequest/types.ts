@@ -3,7 +3,7 @@ export interface reqAbsenceType {
     position: string;
     name: string;
     email : string ,
-    date : Date,
+    date : string,
     absenceTime : number,
     halfDayTime: string,
     reason : string,
