@@ -1,6 +1,7 @@
-import {collection, getDocs} from "firebase/firestore";
+import {collection, doc, getDocs, setDoc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
 import {MemberDetailType, MemberDetailTypes} from "@/components/main/types.ts";
+import {getLocalStorage} from "@/utils/settingStorage.ts";
 
 export const getUserList = async () => {
     const list: MemberDetailTypes[] = [];
@@ -16,3 +17,15 @@ export const getUserList = async () => {
     return list;
 }
 
+export const editWorkingStateInUserList = async (status : boolean) => {
+    const user: MemberDetailTypes = getLocalStorage("user");
+    if(user) {
+        const searchUser = doc(db, "user", user.email);
+        await setDoc(searchUser , {isWorking : status}, {merge : true})
+            .catch((reason) => {
+                console.error(reason);
+            })
+    } else {
+        return
+    }
+}
