@@ -38,7 +38,7 @@ export const getAbsenceRequestDetails = async (): Promise<reqAbsenceType[]> => {
 export const getAbsenceRequestDetailsFilter = async (key: string, filter: string): Promise<reqAbsenceType[]> => {
     let list: reqAbsenceType[] = [];
     const absenceRequestCollection = collection(db, "absenceRequestDetails");
-    const filtering = query(absenceRequestCollection, where(key, '==', filter))
+    const filtering = query(absenceRequestCollection, where(key, '==', key === "absenceTime" ? Number(filter) : filter))
     const absenceRequestList = await getDocs(filtering);
     absenceRequestList.forEach((item) => {
         list.push(item.data() as reqAbsenceType);
