@@ -1,6 +1,5 @@
 import {doc, getDoc, setDoc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
-import {format} from "date-fns";
 
 
 interface reqWorkingStateType {
@@ -21,24 +20,19 @@ export const getWorkingState = async (email: string): Promise<resWorkingStateTyp
     const data = result.data() as resWorkingStateType;
     if (data !== undefined) {
         return {
-            startWorking: format(data.startWorking, 'hh:mm'), endWorking: format(data.endWorking, 'hh:mm')
+            startWorking: data.startWorking, endWorking: data.endWorking
         };
     }
 
     return {startWorking: "00:00", endWorking: "00:00"}
 }
-export const editWorkingState = ({startWorking, endWorking, email}: reqWorkingStateType): boolean => {
+export const editWorkingState = async ({startWorking, endWorking, email}: reqWorkingStateType): Promise<resWorkingStateType> => {
     const workingState = doc(db, "working", email);
-    let isSuccess = false;
-    let startWorkingDate = format(startWorking, 'hh:mm')
-    let endWorkingDate = format(endWorking, 'hh:mm')
-    setDoc(workingState, {startWorking: startWorkingDate, endWorking: endWorkingDate}, {merge: true}).then(() => {
-        isSuccess = true;
-        return isSuccess;
-    })
+    console.log({startWorking: startWorking, endWorking: endWorking},"endWorking")
+    await setDoc(workingState, {startWorking: startWorking, endWorking: endWorking}, {merge: true})
         .catch((reason) => {
             console.error(reason);
         })
-    return isSuccess;
+    return {startWorking: startWorking, endWorking: endWorking}
 }
 
