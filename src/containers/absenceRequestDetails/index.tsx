@@ -10,6 +10,10 @@ import {getAbsenceRequestDetails, getAbsenceRequestDetailsFilter} from "@/utils/
 interface MockData {
   [key: string]: string[];
 }
+const parsingAbsenceTimeToString = (time :number) => {
+  if(time === 4) return "반차";
+  else return "연차"
+}
 export default function AbsenceRequestDetailsContainer() {
   // 상태를 선언하지만 현재는 사용되지 않음. 추후 사용 예정이므로 유지.
   // const [selectedValue, setSelectedValue] = useState<string>(defaultValue);
@@ -22,7 +26,7 @@ export default function AbsenceRequestDetailsContainer() {
         let newList  : MockData = {};
         list.map((item,index)=>{
           let arr:MockData = {
-            [index] : [item.name, item.date, item.type, item.approver ]
+            [index] : [item.name, item.date, item.position,parsingAbsenceTimeToString(item.absenceTime) , item.approver ]
           }
           newList = {...newList, ...arr};
         })
@@ -34,7 +38,7 @@ export default function AbsenceRequestDetailsContainer() {
         let newList = absenceRequestList;
         list.map((item,index)=>{
           let arr:MockData = {
-            [index] : [item.name, item.date, item.type, item.approver ]
+            [index] : [item.name, item.date, item.position,parsingAbsenceTimeToString(item.absenceTime) , item.approver ]
           }
           newList = {...newList, ...arr};
         })
@@ -48,7 +52,7 @@ export default function AbsenceRequestDetailsContainer() {
       let newList = absenceRequestList;
       list.map((item,index)=>{
         let arr:MockData = {
-           [index] : [item.name, item.date, item.type, item.approver ]
+           [index] : [item.name, item.date, item.position,parsingAbsenceTimeToString(item.absenceTime) , item.approver ]
         }
         newList = {...newList, ...arr};
       })
