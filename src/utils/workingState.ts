@@ -1,6 +1,7 @@
 import {doc, getDoc, setDoc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
 import {editWorkingStateInUserList} from "@/utils/userList.ts";
+import {parsingDateToString} from "@/utils/parsingDate.ts";
 
 
 interface reqWorkingStateType {
@@ -26,7 +27,7 @@ export const getWorkingState = async (email: string): Promise<resWorkingStateTyp
         };
     }
 
-    return {startWorking: "00:00", endWorking: "00:00"}
+    return {startWorking: parsingDateToString(new Date("1999-01-01 00:00:00")), endWorking: parsingDateToString(new Date("1999-01-01 00:00:00"))}
 }
 export const editWorkingState = async ({startWorking, endWorking, email,isWorking}: reqWorkingStateType): Promise<resWorkingStateType> => {
     const workingState = doc(db, "working", email);
