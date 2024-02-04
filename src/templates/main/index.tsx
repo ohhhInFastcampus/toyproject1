@@ -8,11 +8,13 @@ import {MemberDetailType, MemberDetailTypes} from "@/components/main/types";
 interface MainPageType {
   user: MemberDetailType;
   working: MemberDetailTypes[];
+    handleSwitchChange :  (checked: boolean) => void
+    switchState : boolean
 }
-const Main = ({ user, working }: MainPageType) => {
+const Main = ({ user, working ,handleSwitchChange,switchState}: MainPageType) => {
   return (
     <div className="nflex ngap-[40px]">
-      <UserMain {...user} />
+      <UserMain user={user} handleSwitchChange={handleSwitchChange} switchState={switchState} />
       <div className="nw-[400px] nm-5 nflex nflex-col nitems-center ngap-y-10">
         <Clock />
         <Calendar />
