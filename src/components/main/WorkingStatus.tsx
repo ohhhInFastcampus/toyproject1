@@ -21,7 +21,7 @@ const WorkingStatus = ({ members }: WorkingStatusProps) => {
             />
             <div
               className={`nmr-4 nw-3 nh-3 nrounded-full ${
-                member.isWorking === "working"
+                member.isWorking
                   ? "nbg-green-500"
                   : "nbg-gray-500"
               }`}
