@@ -5,8 +5,6 @@ import {Textarea} from '@/components/ui/textarea';
 import SelectBox from '@/components/SelectBox';
 import RequestDetail from '@/components/absenceRequest/RequestDetail';
 import {reqAbsenceType} from "@/templates/absenceRequest/types.ts";
-import {MemberDetailTypes} from "@/components/main/types.ts";
-import {getLocalStorage} from "@/utils/settingStorage.ts";
 
 
 interface AbsenceRequestType {
@@ -27,7 +25,7 @@ function AbsenceRequest({
                             value
                         }: AbsenceRequestType) {
 
-    const user: MemberDetailTypes = getLocalStorage("user");
+
     // const handleSelect = (selectedValue: string) => {
     //   setValue(selectedValue);
     //   if (selectedValue === '4') {
@@ -46,8 +44,8 @@ function AbsenceRequest({
                 </CardHeader>
                 <CardContent>
                     <div className="ngrid ngrid-cols-2">
-                        <RequestDetail disabled={true} type="이름" input="text" id="name" value={user.name} onChange={handleChange}/>
-                        <RequestDetail disabled={true} type="직급" input="title" id="position" value={user.department}
+                        <RequestDetail disabled={true} type="이름" input="text" id="name" value={formData.name} onChange={handleChange}/>
+                        <RequestDetail disabled={true} type="직급" input="title" id="position" value={formData.position}
                                        onChange={handleChange}/>
                         <RequestDetail type="결재자" input="approver" id="approver" value={formData.approver}
                                        onChange={handleChange}/>
