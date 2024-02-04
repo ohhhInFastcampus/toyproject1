@@ -3,14 +3,16 @@ import AbsenceRequest from "@/templates/absenceRequest";
 import {reqAbsenceType} from "@/templates/absenceRequest/types.ts";
 import {postAbsenceRequest} from "@/utils/absenceRequest.ts";
 import {parsingDateToString} from "@/utils/parsingDate.ts";
+import {MemberDetailTypes} from "@/components/main/types.ts";
+import {getLocalStorage} from "@/utils/settingStorage.ts";
 
 const AbsenceRequestPage = () => {
-
+    const user: MemberDetailTypes = getLocalStorage("user");
     const [value, setValue] = useState('')
     const [formData, setFormData] = useState<reqAbsenceType>({
         email: '',
-        name: '',
-        position: '',
+        name: user.name,
+        position: user.department,
         approver: '',
         date: parsingDateToString(new Date()),
         absenceTime: 0,
