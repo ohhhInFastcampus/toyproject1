@@ -2,12 +2,14 @@ import MainJobState from "@/components/main/MainJobState";
 import { UserAvatar } from "@/components/main/UserAvatar";
 import WhiteBox from "@/components/main/WhiteBox";
 import { MemberDetailType } from "./types";
+import {format} from "date-fns";
 interface userMainPropsType {
   user : MemberDetailType,
   handleSwitchChange :  (checked: boolean) => void,
-  switchState : boolean
+  switchState : boolean,
+  settingWorkingStatus : ()=>void
 }
-const UserMain = ({user,handleSwitchChange,switchState}: userMainPropsType) => {
+const UserMain = ({user,handleSwitchChange,switchState,settingWorkingStatus}: userMainPropsType) => {
 
   return (
     <>
@@ -25,11 +27,11 @@ const UserMain = ({user,handleSwitchChange,switchState}: userMainPropsType) => {
             <MainJobState
               onSwitchChange={handleSwitchChange}
               switchState={switchState}
-            />
+             settingWorkingStatus={settingWorkingStatus}/>
           </div>
           <WhiteBox>
-            <div className="nmr-10">시작 시간: {user.startTime}</div>
-            <div>종료 시간: {user.endTime}</div>
+            <div className="nmr-10">시작 시간: {format(user.startTime, 'hh:mm')}</div>
+            <div>종료 시간: {user.endTime==="1999-01-01 00:00:00" ? "" : format(user.endTime,'hh:mm')}</div>
           </WhiteBox>
         </div>
       </div>
