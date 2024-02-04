@@ -1,15 +1,12 @@
 import {doc, getDoc, setDoc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
-import {getLocalStorage} from "@/utils/settingStorage.ts";
-import {MemberDetailTypes} from "@/components/main/types.ts";
-import {ParsingDateToString} from "@/utils/parsingDate.ts";
+import {format} from "date-fns";
 
-const user: MemberDetailTypes = getLocalStorage("user");
-const workingState = doc(db, "working", user.email);
 
 interface reqWorkingStateType {
     startWorking: Date,
     endWorking: Date
+    email : string
 }
 
 interface resWorkingStateType {
@@ -17,18 +14,21 @@ interface resWorkingStateType {
     endWorking: string
 }
 
-export const getWorkingState = async (): Promise<resWorkingStateType> => {
+export const getWorkingState = async (email: string): Promise<resWorkingStateType> => {
+    const workingState = doc(db, "working", email);
     const result = await getDoc(workingState);
+
     const data = result.data() as resWorkingStateType;
     if (data !== undefined) {
         return data;
     }
-    return {startWorking: "00:00:00", endWorking: "00:00:00"}
+    return {startWorking: "00:00", endWorking: "00:00"}
 }
-export const editWorkingState = ({startWorking, endWorking}: reqWorkingStateType): boolean => {
+export const editWorkingState = ({startWorking, endWorking,email}: reqWorkingStateType): boolean => {
+    const workingState = doc(db, "working", email);
     let isSuccess = false;
-    let startWorkingDate = ParsingDateToString(startWorking);
-    let endWorkingDate = ParsingDateToString(endWorking);
+    let startWorkingDate = format(startWorking, 'hh:mm')
+    let endWorkingDate = format(endWorking, 'hh:mm')
     setDoc(workingState, {startWorking: startWorkingDate, endWorking: endWorkingDate}, {merge: true}).then(() => {
         isSuccess = true;
         return isSuccess;
