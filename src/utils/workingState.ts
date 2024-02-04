@@ -4,9 +4,9 @@ import {format} from "date-fns";
 
 
 interface reqWorkingStateType {
-    startWorking: Date,
-    endWorking: Date
-    email : string
+    startWorking: string,
+    endWorking: string
+    email: string
 }
 
 interface resWorkingStateType {
@@ -20,11 +20,14 @@ export const getWorkingState = async (email: string): Promise<resWorkingStateTyp
 
     const data = result.data() as resWorkingStateType;
     if (data !== undefined) {
-        return data;
+        return {
+            startWorking: format(data.startWorking, 'hh:mm'), endWorking: format(data.endWorking, 'hh:mm')
+        };
     }
+
     return {startWorking: "00:00", endWorking: "00:00"}
 }
-export const editWorkingState = ({startWorking, endWorking,email}: reqWorkingStateType): boolean => {
+export const editWorkingState = ({startWorking, endWorking, email}: reqWorkingStateType): boolean => {
     const workingState = doc(db, "working", email);
     let isSuccess = false;
     let startWorkingDate = format(startWorking, 'hh:mm')
