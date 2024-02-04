@@ -1,15 +1,25 @@
 import Main from "@/templates/main";
 import {MemberDetailTypes} from "@/components/main/types";
 import {getLocalStorage, setJsonToString, setLocalStorage,} from "@/utils/settingStorage.ts";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getUserList} from "@/utils/userList.ts";
 import {editWorkingState} from "@/utils/workingState.ts";
 import {parsingDateToString} from "@/utils/parsingDate.ts";
+import {settingUserImage} from "@/utils/settingImage.ts";
 const MainPage = () => {
   const storage = getLocalStorage("user");
   const [user,setUser] = useState<MemberDetailTypes>(storage);
   const [userList,setUserList] = useState<MemberDetailTypes[]>([]);
   const [switchState, setSwitchState] = useState(storage.isWorking);
+  const changeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const response = await settingUserImage(e);
+    console.log(response,"response");
+    let newUser = user;
+    newUser.profile = response!;
+    setUser(newUser);
+    setLocalStorage('user',setJsonToString(newUser));
+    return newUser.profile;
+  }
   // 스위치 상태 변경 함수
   const handleSwitchChange = (newState: boolean) => {
     setSwitchState(newState);
@@ -55,7 +65,7 @@ const MainPage = () => {
   },[])
   return (
     <div className="nmt-[40px] nmb-[40px]">
-      <Main user={user} working={userList} switchState={switchState}   handleSwitchChange={handleSwitchChange} settingWorkingStatus={settingWorkingStatus}/>;
+      <Main user={user} working={userList} switchState={switchState} changeImage={changeImage} handleSwitchChange={handleSwitchChange} settingWorkingStatus={settingWorkingStatus}/>;
     </div>
   );
 };
