@@ -22,7 +22,7 @@ export default function AbsenceRequestDetailsContainer() {
   const [value, getValue] = useState('');
   useEffect(() => {
     if(value !== "all") {
-      getAbsenceRequestDetailsFilter('type', value).then((list)=>{
+      getAbsenceRequestDetailsFilter('absenceTime', value).then((list)=>{
         let newList  : MockData = {};
         list.map((item,index)=>{
           let arr:MockData = {

@@ -27,8 +27,8 @@ const tableData: MockData = {
 const defaultValue: string = "전체";
 const selectItem: SelectContentsItem[] = [
   { label: "전체", value: "all", name: "전체" },
-  { label: "반차", value: "반차", name: "반차" },
-  { label: "연차", value: "연차", name: "연차" },
+  { label: "반차", value: "4", name: "반차" },
+  { label: "연차", value: "8", name: "연차" },
 ];
 
 export { headers, tableData, defaultValue, selectItem };
