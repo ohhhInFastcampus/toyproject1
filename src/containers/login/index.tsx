@@ -27,7 +27,7 @@ const LoginPage = () => {
         )
     };
     return (
-        <Login handleLogin={handleLogin} email={email} setEmail={setEmail} setPassword={setPassword} password={password} />
+        <Login handleLogin={handleLogin} error={error} email={email} setEmail={setEmail} setPassword={setPassword} password={password} />
     )
 }
 export default LoginPage;

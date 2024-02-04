@@ -10,9 +10,10 @@ interface LoginPropsType {
     password: string,
     setEmail: React.Dispatch<React.SetStateAction<string>>,
     setPassword: React.Dispatch<React.SetStateAction<string>>,
+    error : string
 }
 
-function Login({handleLogin, email, password, setEmail, setPassword}: LoginPropsType) {
+function Login({handleLogin, email, password, setEmail, setPassword,error}: LoginPropsType) {
 
 
     return (
@@ -38,6 +39,7 @@ function Login({handleLogin, email, password, setEmail, setPassword}: LoginProps
                         value={password}
                         onChange={setPassword}
                     />
+                    <div className={'ntext-red-600'}>{error}</div>
                 </CardContent>
                 <CardFooter className="ngrid njustify-items-center">
                     <Button className="nw-60 nmt-2 np-2" onClick={handleLogin}>
