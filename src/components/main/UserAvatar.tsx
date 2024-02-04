@@ -1,22 +1,21 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { MemberDetailType } from "@/components/main/types";
+import React, {useState} from "react";
 
-const UserAvatar = ({ profile }: MemberDetailType) => {
+const UserAvatar = ({ profile,changeImage }: MemberDetailType) => {
+    const [img,setImg] = useState(profile);
+    const settingImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+        changeImage(e).then((res)=>{
+            setImg(res);
+        })
+    }
   return (
     <>
       <div className="nrelative ninline-block">
         <Avatar className="nflex njustify-center nw-40 nh-40 nbg-white">
-          <AvatarImage src={profile} alt="@shadcn" />
+          <AvatarImage src={img} alt="@shadcn" />
         </Avatar>
-        <Button
-          variant="outline"
-          size="xs"
-          font="base"
-          className="nabsolute nright-0 nbottom-0 nflex njustify-center nalign-items nrounded-full nh-7 nw-7 nbg-gray-300"
-        >
-          +
-        </Button>
+        <input type="file" onChange={settingImage} />
       </div>
     </>
   );
