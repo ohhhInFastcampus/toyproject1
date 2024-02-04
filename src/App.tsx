@@ -7,6 +7,7 @@ import Login from "@/templates/login";
 import {PrivateRoute} from "@/route/PrivateRoute.tsx";
 import MainPage from "@/containers/main";
 import AbsenceRequestDetailsContainer from "@/containers/absenceRequestDetails";
+import AbsenceRequestPage from "@/containers/absenceRequest";
 
 
 const router = createBrowserRouter([
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: "absenceRequest",
         // action: loginAction,
-        Component: MainPage,
+        Component: AbsenceRequestPage,
       },
       {
         path: "absenceRequestDetails",
