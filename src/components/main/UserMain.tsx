@@ -18,7 +18,7 @@ const UserMain = ({user,handleSwitchChange,switchState,settingWorkingStatus,chan
       <div className="nw-[400px]">
         <div className="nflex nflex-col nrounded-3xl nbg-blue-200 np-8 ngap-y-8 nshadow-md nborder-2">
           <div className="nself-center ">
-            <UserAvatar {...user} changeImage={changeImage} />
+            <UserAvatar profile={user} changeImage={changeImage} />
           </div>
           <WhiteBox className="">이름: {user.name}</WhiteBox>
           <WhiteBox className="nmb-6">
