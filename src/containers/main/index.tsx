@@ -6,15 +6,16 @@ import {getUserList} from "@/utils/userList.ts";
 import {editWorkingState} from "@/utils/workingState.ts";
 import {parsingDateToString} from "@/utils/parsingDate.ts";
 import {settingUserImage} from "@/utils/settingImage.ts";
+import {useRecoilState} from "recoil";
+import {userAtom} from "@/store/userAtom.ts";
 const MainPage = () => {
   const storage = getLocalStorage("user");
-  const [user,setUser] = useState<MemberDetailTypes>(storage);
+  const [user, setUser] = useRecoilState(userAtom);
   const [userList,setUserList] = useState<MemberDetailTypes[]>([]);
   const [switchState, setSwitchState] = useState(storage.isWorking);
   const changeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const response = await settingUserImage(e);
-    console.log(response,"response");
-    let newUser = user;
+    let newUser:MemberDetailTypes = {...user};
     newUser.profile = response!;
     setUser(newUser);
     setLocalStorage('user',setJsonToString(newUser));
