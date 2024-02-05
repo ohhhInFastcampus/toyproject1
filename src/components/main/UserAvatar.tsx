@@ -2,8 +2,6 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { MemberDetailType } from "@/components/main/types";
 import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button.tsx";
-import { useSetRecoilState } from "recoil";
-import { userStateFamily } from "@/store/userAtom";
 
 interface userAvatarType {
   profile: MemberDetailType;
@@ -11,21 +9,17 @@ interface userAvatarType {
 }
 const UserAvatar = ({ profile, changeImage }: userAvatarType) => {
   const [img, setImg] = useState(profile.profile);
-  const setUserState = useSetRecoilState(userStateFamily(profile.email));
-
   const settingImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    changeImage(e).then((newProfileUrl) => {
-      setImg(newProfileUrl);
-      setUserState((oldProfileData) => ({
-        ...oldProfileData,
-        profile: newProfileUrl,
-      }));
+    changeImage(e).then((res) => {
+      setImg(res);
     });
   };
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
-    fileInputRef.current?.click();
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
   };
   return (
     <>

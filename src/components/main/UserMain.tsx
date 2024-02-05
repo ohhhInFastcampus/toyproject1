@@ -2,17 +2,22 @@ import MainJobState from "@/components/main/MainJobState";
 import { UserAvatar } from "@/components/main/UserAvatar";
 import WhiteBox from "@/components/main/WhiteBox";
 import { MemberDetailType } from "./types";
-import {format} from "date-fns";
+import { format } from "date-fns";
 import React from "react";
 interface userMainPropsType {
-  user : MemberDetailType,
-  handleSwitchChange :  (checked: boolean) => void,
-  switchState : boolean,
-  settingWorkingStatus : ()=>void,
-  changeImage: (e: React.ChangeEvent<HTMLInputElement>) => Promise<string>
+  user: MemberDetailType;
+  handleSwitchChange: (checked: boolean) => void;
+  switchState: boolean;
+  settingWorkingStatus: () => void;
+  changeImage: (e: React.ChangeEvent<HTMLInputElement>) => Promise<string>;
 }
-const UserMain = ({user,handleSwitchChange,switchState,settingWorkingStatus,changeImage}: userMainPropsType) => {
-
+const UserMain = ({
+  user,
+  handleSwitchChange,
+  switchState,
+  settingWorkingStatus,
+  changeImage,
+}: userMainPropsType) => {
   return (
     <>
       <div className="nw-[400px]">
@@ -29,11 +34,14 @@ const UserMain = ({user,handleSwitchChange,switchState,settingWorkingStatus,chan
             <MainJobState
               onSwitchChange={handleSwitchChange}
               switchState={switchState}
-             settingWorkingStatus={settingWorkingStatus}/>
+              settingWorkingStatus={settingWorkingStatus}
+            />
           </div>
           <WhiteBox>
-            <div className="nmr-10">시작 시간: {format(user.startTime, 'hh:mm')}</div>
-            <div>종료 시간: {user.endTime==="1999-01-01 00:00:00" ? "" : format(user.endTime,'hh:mm')}</div>
+            <div className="nmr-10">
+              시작 시간: {format(user.startTime, "HH:mm")}
+            </div>
+            <div>종료 시간: {format(user.endTime, "HH:mm")}</div>
           </WhiteBox>
         </div>
       </div>
