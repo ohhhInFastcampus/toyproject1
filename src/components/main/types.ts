@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface MemberDetailType {
   profile: string;
   name: string;
@@ -8,7 +6,6 @@ export interface MemberDetailType {
   isWorking: "working" | "not working";
   startTime: string;
   endTime: string;
-  changeImage: (e: React.ChangeEvent<HTMLInputElement>) => Promise<string>
 }
 
 //TODO 데이터 타입 교정 필요
