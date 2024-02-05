@@ -11,56 +11,57 @@ import {
   getAbsenceRequestDetailsFilter,
 } from "@/utils/absenceRequest.ts";
 interface MockData {
-  [key: string]: string[];
+  name: string;
+  date: string;
+  position: string;
+  absenceTime: number;
+  halfDayTime: string;
+  approver: string;
 }
-const parsingAbsenceTimeToString = (time: number) => {
-  if (time === 4) return "반차";
-  else return "연차";
+
+type ProcessedData = { [key: string]: string[] };
+
+const AbsenceTimeToString: { [key: number]: string } = {
+  4: "반차",
+  8: "연차",
 };
+const parsingAbsenceTimeToString = (time: number) => {
+  return AbsenceTimeToString[time];
+};
+
+const processAbsenceRequestData = (response: MockData[]): ProcessedData => {
+  return response.reduce(
+    (acc, item, index) => ({
+      ...acc,
+      [index]: [
+        item.name,
+        item.date,
+        item.position,
+        parsingAbsenceTimeToString(item.absenceTime),
+        item.halfDayTime,
+        item.approver,
+      ],
+    }),
+    {}
+  );
+};
+
 export default function AbsenceRequestDetailsContainer() {
-  const [absenceRequestList, setAbsenceRequestList] = useState<MockData>({});
+  const [absenceRequestList, setAbsenceRequestList] = useState<ProcessedData>(
+    {}
+  );
   // selectedValue 상태를 업데이트하는 함수. 현재 이 함수는 AbsenceRequestDetails 컴포넌트로 전달되고 있음.
   const [value, getValue] = useState("");
+
   const filterData = async (key: string, value: string) => {
-    if (key.length === 0) {
-      let newList = absenceRequestList;
-      const response = await getAbsenceRequestDetails();
-      console.log(response);
-      response.map((item, index) => {
-        let arr: MockData = {
-          [index]: [
-            item.name,
-            item.date,
-            item.position,
-            parsingAbsenceTimeToString(item.absenceTime),
-            item.halfDayTime,
-            item.approver,
-          ],
-        };
-        newList = { ...newList, ...arr };
-      });
-      setAbsenceRequestList(newList);
-      console.log(newList, "newList");
-    } else {
-      const response = await getAbsenceRequestDetailsFilter(key, value);
-      let newList: MockData = {};
-      response.map((item, index) => {
-        let arr: MockData = {
-          [index]: [
-            item.name,
-            item.date,
-            item.position,
-            parsingAbsenceTimeToString(item.absenceTime),
-            item.halfDayTime,
-            item.approver,
-          ],
-        };
-        newList = { ...newList, ...arr };
-      });
-      setAbsenceRequestList(newList);
-      console.log(newList, "newList in ");
-    }
+    const response =
+      key.length === 0
+        ? await getAbsenceRequestDetails()
+        : await getAbsenceRequestDetailsFilter(key, value);
+    const newList = processAbsenceRequestData(response);
+    setAbsenceRequestList(newList);
   };
+
   useEffect(() => {
     if (value !== "all") {
       filterData("absenceTime", value);
@@ -68,26 +69,14 @@ export default function AbsenceRequestDetailsContainer() {
       filterData("", value);
     }
   }, [value]);
+
   useEffect(() => {
     getAbsenceRequestDetails().then((list) => {
-      let newList = absenceRequestList;
-      list.map((item, index) => {
-        let arr: MockData = {
-          [index]: [
-            item.name,
-            item.date,
-            item.position,
-            parsingAbsenceTimeToString(item.absenceTime),
-            item.halfDayTime,
-            item.approver,
-          ],
-        };
-        newList = { ...newList, ...arr };
-      });
+      const newList = processAbsenceRequestData(list);
       setAbsenceRequestList(newList);
-      console.log(newList, "newList");
     });
   }, []);
+
   return (
     <AbsenceRequestDetails
       headers={headers}
