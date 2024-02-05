@@ -76,25 +76,28 @@ export default function AbsenceRequestDetailsContainer() {
     );
     setAbsenceRequestList(newList);
   };
-
-  useEffect(() => {
-    if (value !== "all") {
-      filterData("absenceTime", value);
-    } else {
-      filterData("", value);
-    }
-  }, [value]);
-
   useEffect(() => {
     getAbsenceRequestDetails().then((list) => {
       const newList = processAbsenceRequestData(list);
       setAbsenceRequestList(newList);
-      console.log(list);
     });
   }, []);
+
   useEffect(() => {
-    filterData("", "");
-  }, [currentPage]); // currentPage가 변경될 때마다 filterData 함수 호출
+    const fetchData = async () => {
+      // 필터링 로직이 여기에 들어갑니다.
+      if (value !== "all") {
+        await filterData("absenceTime", value);
+      } else {
+        await filterData("", value);
+      }
+    };
+    fetchData();
+  }, [value, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [value]);
 
   return (
     <>
