@@ -66,7 +66,7 @@ const MainPage = () => {
   },[])
   return (
     <div className="nmt-[40px] nmb-[40px]">
-      <Main user={user} working={userList} switchState={switchState} changeImage={changeImage} handleSwitchChange={handleSwitchChange} settingWorkingStatus={settingWorkingStatus}/>;
+      <Main user={user} working={userList} switchState={switchState} changeImage={changeImage} handleSwitchChange={handleSwitchChange} settingWorkingStatus={settingWorkingStatus}/>
     </div>
   );
 };
