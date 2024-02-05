@@ -72,13 +72,15 @@ const Header = () => {
   return (
     <header
       className={
-        "nw-full nh-20 nborder-b-1 nborder-blue-300 nflex nitems-center njustify-between"
+        "nw-full nh-20 nborder-b-1 nborder-blue-300 nflex nitems-center njustify-between np-10"
       }
     >
       <Logo />
       <Gnb />
-      <User {...user}/>
-      <Button onClick={()=>{deleteLocalStorage('user'); navigate('/login')}}>로그아웃</Button>
+      <div className={'nflex njustify-center nitems-center ngap-2'}>
+        <User {...user}/>
+        <Button onClick={()=>{deleteLocalStorage('user'); navigate('/login')}}>로그아웃</Button>
+      </div>
     </header>
   );
 };
