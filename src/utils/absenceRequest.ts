@@ -4,9 +4,6 @@ import {collection, getDocs, addDoc, query, where} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
 import {reqAbsenceType} from "@/templates/absenceRequest/types.ts";
 
-//TODO 연차요청 인터페이스 조정 필요
-
-
 const user: MemberDetailTypes = getLocalStorage("user");
 export const postAbsenceRequest = async (request: reqAbsenceType) => {
     const absenceRequest = collection(db, "absenceRequestDetails");
