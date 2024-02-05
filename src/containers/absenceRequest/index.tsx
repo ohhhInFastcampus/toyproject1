@@ -4,7 +4,7 @@ import {reqAbsenceType} from "@/templates/absenceRequest/types.ts";
 import {postAbsenceRequest} from "@/utils/absenceRequest.ts";
 import {MemberDetailTypes} from "@/components/main/types.ts";
 import {getLocalStorage} from "@/utils/settingStorage.ts";
-import SubmitModal from "@/components/absenceRequest/SubmitModal"
+import SubmitModal from "@/components/absenceRequest/SubmitModal"
 import ErrorModal from "@/components/absenceRequest/ErrorModal";
 import {format} from "date-fns";
 
