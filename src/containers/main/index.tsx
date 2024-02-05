@@ -55,6 +55,7 @@ const MainPage = () => {
       let newUser:MemberDetailTypes = {...user};
       newUser.startTime = response.startWorking;
       newUser.endTime = response.endWorking;
+      newUser.isWorking = switchState;
       setLocalStorage('user',setJsonToString(newUser));
       setUser(newUser);
       await getUser();
