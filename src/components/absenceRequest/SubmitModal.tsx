@@ -9,7 +9,7 @@ import {
 
 const SubmitModal = ({ open, onClose }: ModalPropsType) => {
   return (
-    <AlertDialog open={open} onClose={onClose}>
+    <AlertDialog open={open} >
       <AlertDialogContent>
         <AlertDialogDescription>
           부재 신청이 완료되었습니다.
