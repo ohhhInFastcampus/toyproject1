@@ -5,10 +5,11 @@ import {Textarea} from '@/components/ui/textarea';
 import SelectBox from '@/components/SelectBox';
 import RequestDetail from '@/components/absenceRequest/RequestDetail';
 import {reqAbsenceType} from "@/templates/absenceRequest/types.ts";
-
+import "./absenceRequest.scss"
 
 interface AbsenceRequestType {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
+    handleCancel: () => void;
     formData: reqAbsenceType,
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void,
     setValue: React.Dispatch<React.SetStateAction<string>>,
@@ -18,6 +19,7 @@ interface AbsenceRequestType {
 
 function AbsenceRequest({
                             handleSubmit,
+                            handleCancel,
                             formData,
                             handleChange,
                             setValue,
@@ -37,7 +39,8 @@ function AbsenceRequest({
 
 
     return (
-        <Card className="nw-[500px] np-[30px] nm-10 nborder-solid nborder-2 nborder-gray-300">
+        <Card className="nflex njustify-center">
+        <Card className="nw-[500px] np-[30px] nm-10 nbg-slate-50 nborder-solid nborder-1 nborder-gray-300 nshadow-xl ">
             <form onSubmit={handleSubmit}>
                 <CardHeader className="ngrid njustify-items-center npy-5 nmb-5">
                     <CardTitle className="njustify-items-center">부재 신청</CardTitle>
@@ -49,7 +52,7 @@ function AbsenceRequest({
                                        onChange={handleChange}/>
                         <RequestDetail type="결재자" input="approver" id="approver" value={formData.approver}
                                        onChange={handleChange}/>
-                        <RequestDetail type="날짜" input="date" id="date" onChange={handleChange}/>
+                        <RequestDetail type="날짜" value={formData.date} input="date" id="date" onChange={handleChange}/>
                     </div>
                     <div className="nflex-row ngap-6 np-3">
                         <Label className="nflex nmy-3" htmlFor="request-absence-type">부재신청 타입</Label>
@@ -62,8 +65,8 @@ function AbsenceRequest({
                     </div>
                     {value === "4" ?
                         <div className="nflex ngap-3 np-3">
-                            <Button type="button" onClick={() => handleTimeClick("오전")}>오전</Button>
-                            <Button type="button" onClick={() => handleTimeClick("오후")}>오후</Button>
+                            <Button variant="ghost" className="nshadow-md" type="button" onClick={() => handleTimeClick("오전")}>오전</Button>
+                            <Button variant="ghost" className="nshadow-md" type="button" onClick={() => handleTimeClick("오후")}>오후</Button>
                         </div> : <></>
                     }
                     <div className="nflex-row ngap-6 np-3">
@@ -75,11 +78,12 @@ function AbsenceRequest({
                         />
                     </div>
                 </CardContent>
-                <CardFooter className="nflex ngap-6">
-                    <Button variant="ghost">cancel</Button>
-                    <Button>submit</Button>
+                <CardFooter className="ngrid njustify-items-end">
+                    {/* <Button variant="ghost" className="nshadow-md" onClick={handleCancel}>cancel</Button> */}
+                    <Button className="nshadow-lg nbg-sky-500 nhover:bg-sky-700" type="submit">submit</Button>
                 </CardFooter>
             </form>
+        </Card>
         </Card>
     );
 }
