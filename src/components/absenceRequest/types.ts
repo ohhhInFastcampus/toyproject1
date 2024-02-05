@@ -5,3 +5,7 @@ export interface RequestDetailType {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled? : boolean
 }
+export interface ModalPropsType {
+  open: boolean;
+  onClose: () => void;
+}

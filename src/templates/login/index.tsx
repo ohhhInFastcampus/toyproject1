@@ -17,8 +17,8 @@ function Login({handleLogin, email, password, setEmail, setPassword,error}: Logi
 
 
     return (
-        <Card className="nflex njustify-center">
-            <Card className="nw-[450px] npy-[50px] nm-10 nborder-solid nborder-2 nborder-gray-300">
+        <Card className="nflex njustify-center nmt-[100px]">
+            <Card className="nw-[500px] npy-[80px] nm-10 nbg-slate-30 nborder-solid nborder-1 nborder-gray-300 nshadow-xl ">
                 <CardHeader className="ngrid njustify-items-center">
                     <a href={"/"} className={"nblock  nmb-5 nw-[150px]"}>
                         <img src={img} alt={"logo"}/>
