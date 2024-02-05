@@ -3,6 +3,7 @@ import {db} from "@/Firebase.ts";
 import {reqLoginType} from "@/templates/login/type.ts";
 import {setJsonToString, setLocalStorage} from "@/utils/settingStorage.ts";
 import {MemberDetailType, MemberDetailTypes} from "@/components/main/types.ts";
+import {getWorkingState} from "@/utils/workingState.ts";
 
 export const login = async ({id, password}:reqLoginType) => {
     if(id.length === 0) {
@@ -15,14 +16,19 @@ export const login = async ({id, password}:reqLoginType) => {
     const result = await getDoc(searchUser);
     const data = result.data();
     if(data !== undefined) {
+        const workingState = await getWorkingState(id);
         let obj : MemberDetailTypes = {
             ...data as MemberDetailType , email : id
         }
+        obj.startTime = workingState.startWorking;
+        obj.endTime = workingState.endWorking;
+        console.log(obj,"obj")
         setLocalStorage("user",setJsonToString(obj));
     } else {
         throw new Error("유저가 존재하지 않습니다. 관리부서에 문의해주세요.");
     }
 }
+
 
 // TODO if layout
 

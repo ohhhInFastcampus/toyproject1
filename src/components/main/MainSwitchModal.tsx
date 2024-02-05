@@ -14,12 +14,14 @@ import { useState } from "react";
 
 interface MainSwitchModalProps {
   onSwitchChange: (checked: boolean) => void; // 'onSwitchChange' 함수의 타입 정의
-  switchState: boolean; // 'switchState' 상태의 타입 정의
+  switchState: boolean;
+  settingWorkingStatus : ()=>void// 'switchState' 상태의 타입 정의
 }
 
 export default function MainSwitchModal({
   onSwitchChange,
   switchState,
+  settingWorkingStatus
 }: MainSwitchModalProps) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
 
@@ -52,7 +54,7 @@ export default function MainSwitchModal({
             <AlertDialogCancel onClick={() => onSwitchChange(!switchState)}>
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction onClick={() => ""}>Continue</AlertDialogAction>
+            <AlertDialogAction onClick={() => {settingWorkingStatus()}}>Continue</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

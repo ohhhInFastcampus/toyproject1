@@ -1,15 +1,14 @@
 import {doc, getDoc, setDoc} from "firebase/firestore";
 import {db} from "@/Firebase.ts";
-import {getLocalStorage} from "@/utils/settingStorage.ts";
-import {MemberDetailTypes} from "@/components/main/types.ts";
-import {ParsingDateToString} from "@/utils/parsingDate.ts";
+import {editWorkingStateInUserList} from "@/utils/userList.ts";
+import {parsingDateToString} from "@/utils/parsingDate.ts";
 
-const user: MemberDetailTypes = getLocalStorage("user");
-const workingState = doc(db, "working", user.email);
 
 interface reqWorkingStateType {
-    startWorking: Date,
-    endWorking: Date
+    startWorking: string,
+    endWorking: string
+    email: string,
+    isWorking: boolean
 }
 
 interface resWorkingStateType {
@@ -17,25 +16,27 @@ interface resWorkingStateType {
     endWorking: string
 }
 
-export const getWorkingState = async (): Promise<resWorkingStateType> => {
+export const getWorkingState = async (email: string): Promise<resWorkingStateType> => {
+    const workingState = doc(db, "working", email);
     const result = await getDoc(workingState);
+
     const data = result.data() as resWorkingStateType;
     if (data !== undefined) {
-        return data;
+        return {
+            startWorking: data.startWorking, endWorking: data.endWorking
+        };
     }
-    return {startWorking: "00:00:00", endWorking: "00:00:00"}
+
+    return {startWorking: parsingDateToString(new Date("1999-01-01 00:00:00")), endWorking: parsingDateToString(new Date("1999-01-01 00:00:00"))}
 }
-export const editWorkingState = ({startWorking, endWorking}: reqWorkingStateType): boolean => {
-    let isSuccess = false;
-    let startWorkingDate = ParsingDateToString(startWorking);
-    let endWorkingDate = ParsingDateToString(endWorking);
-    setDoc(workingState, {startWorking: startWorkingDate, endWorking: endWorkingDate}, {merge: true}).then(() => {
-        isSuccess = true;
-        return isSuccess;
-    })
+export const editWorkingState = async ({startWorking, endWorking, email,isWorking}: reqWorkingStateType): Promise<resWorkingStateType> => {
+    const workingState = doc(db, "working", email);
+    console.log({startWorking: startWorking, endWorking: endWorking},"endWorking")
+    await setDoc(workingState, {startWorking: startWorking, endWorking: endWorking}, {merge: true})
         .catch((reason) => {
             console.error(reason);
         })
-    return isSuccess;
+    await editWorkingStateInUserList(isWorking);
+    return {startWorking: startWorking, endWorking: endWorking}
 }
 

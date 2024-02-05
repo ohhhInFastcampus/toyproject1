@@ -14,7 +14,7 @@ const Layout = ({isHeader = true, isFooter = true, children}: LayoutPropsType) =
             {
                 isHeader ? <Header/> : <></>
             }
-            <section className={"contents nmax-w-screen-xl nm-auto"}>
+            <section className={"contents nmin-w-screen-xl nmin-h-screen nm-auto"}>
                 {children}
             </section>
             {

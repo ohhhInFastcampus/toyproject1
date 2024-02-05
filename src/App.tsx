@@ -3,10 +3,11 @@ import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
 import GalleryPage from "@/containers/gallery";
 import ErrorPage from "@/templates/error";
 import GalleryDetailPage from "@/containers/galleryDetail";
-import Login from "@/templates/login";
 import {PrivateRoute} from "@/route/PrivateRoute.tsx";
 import MainPage from "@/containers/main";
 import AbsenceRequestDetailsContainer from "@/containers/absenceRequestDetails";
+import AbsenceRequestPage from "@/containers/absenceRequest";
+import LoginPage from "@/containers/login";
 
 
 const router = createBrowserRouter([
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       {
         path: "absenceRequest",
         // action: loginAction,
-        Component: MainPage,
+        Component: AbsenceRequestPage,
       },
       {
         path: "absenceRequestDetails",
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
   {
     path: "login",
     // action: loginAction,
-    Component: Login,
+    Component: LoginPage,
   },
   {
     path: "/logout",
