@@ -1,9 +1,11 @@
 import img from "@/assets/logo.png";
 import { UserHeader } from "./main/UserHeader";
 import {MemberDetailTypes} from "@/components/main/types.ts";
-import {deleteLocalStorage, getLocalStorage} from "@/utils/settingStorage.ts";
+import {deleteLocalStorage} from "@/utils/settingStorage.ts";
 import {Button} from "@/components/ui/button.tsx";
 import {useNavigate} from "react-router-dom";
+import {useRecoilValue} from "recoil";
+import {userAtom} from "@/store/userAtom.ts";
 
 interface GnbListType {
   title: string;
@@ -67,7 +69,7 @@ const User = (user: MemberDetailTypes) => {
 };
 
 const Header = () => {
-  const user: MemberDetailTypes = getLocalStorage("user");
+  const user = useRecoilValue(userAtom);
   const navigate = useNavigate();
   return (
     <header

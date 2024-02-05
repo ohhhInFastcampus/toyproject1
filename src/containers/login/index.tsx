@@ -3,11 +3,14 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {login} from "@/utils/login.ts";
 import {reqLoginType} from "@/templates/login/type.ts";
+import {useRecoilState} from "recoil";
+import {userAtom} from "@/store/userAtom.ts";
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState("");
+    const [_, setUser] = useRecoilState(userAtom);
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -15,8 +18,9 @@ const LoginPage = () => {
             id: email,
             password: password,
         };
-        await login(loginData).then(() => {
+        await login(loginData).then((res) => {
             setError("");
+            setUser(res);
             navigate("/");
         }).catch((reason) => {
                 if (reason instanceof Error) {
