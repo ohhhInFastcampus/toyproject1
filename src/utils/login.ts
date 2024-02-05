@@ -24,6 +24,7 @@ export const login = async ({id, password}:reqLoginType) => {
         obj.endTime = workingState.endWorking;
         console.log(obj,"obj")
         setLocalStorage("user",setJsonToString(obj));
+        return obj;
     } else {
         throw new Error("유저가 존재하지 않습니다. 관리부서에 문의해주세요.");
     }
