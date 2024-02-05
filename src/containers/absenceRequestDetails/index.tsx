@@ -54,7 +54,7 @@ export default function AbsenceRequestDetailsContainer() {
     {}
   );
   // selectedValue 상태를 업데이트하는 함수. 현재 이 함수는 AbsenceRequestDetails 컴포넌트로 전달되고 있음.
-  const [value, getValue] = useState("");
+  const [value, getValue] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const itemsPerPage = 15;
