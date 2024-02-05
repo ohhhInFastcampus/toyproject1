@@ -9,7 +9,6 @@ import "./absenceRequest.scss"
 
 interface AbsenceRequestType {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void,
-    handleCancel: () => void;
     formData: reqAbsenceType,
     handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void,
     setValue: React.Dispatch<React.SetStateAction<string>>,
@@ -19,7 +18,6 @@ interface AbsenceRequestType {
 
 function AbsenceRequest({
                             handleSubmit,
-                            handleCancel,
                             formData,
                             handleChange,
                             setValue,
@@ -28,14 +26,6 @@ function AbsenceRequest({
                         }: AbsenceRequestType) {
 
 
-    // const handleSelect = (selectedValue: string) => {
-    //   setValue(selectedValue);
-    //   if (selectedValue === '4') {
-    //     return setShowButtons(true);
-    //   } else {
-    //     return setShowButtons(false);
-    //   }
-    // };
 
 
     return (

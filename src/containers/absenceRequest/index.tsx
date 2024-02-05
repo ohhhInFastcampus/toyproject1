@@ -2,7 +2,6 @@ import {useState} from "react";
 import AbsenceRequest from "@/templates/absenceRequest";
 import {reqAbsenceType} from "@/templates/absenceRequest/types.ts";
 import {postAbsenceRequest} from "@/utils/absenceRequest.ts";
-import {parsingDateToString} from "@/utils/parsingDate.ts";
 import {MemberDetailTypes} from "@/components/main/types.ts";
 import {getLocalStorage} from "@/utils/settingStorage.ts";
 import SubmitModal from "@/components/absenceRequest/SubmitModal"
@@ -47,23 +46,6 @@ const AbsenceRequestPage = () => {
     };
     
 
-    const handleCancel = () => {
-        // Clear the form or perform other actions to reset
-        setFormData({
-            email: "",
-            name: user.name,
-            position: user.department,
-            approver: "",
-            date: parsingDateToString(new Date()),
-            absenceTime: 0,
-            halfDayTime: "",
-            reason: ""
-        });
-        setValue("")
-        setShowModal(false); // Close the modal
-        setShowErrorModal(false)
-        console.log(showModal)
-    };
 
     
     const handleTimeClick = (time: string) => {
@@ -92,7 +74,6 @@ const AbsenceRequestPage = () => {
             formData={formData}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            handleCancel={handleCancel} 
             handleTimeClick={handleTimeClick}
             setValue={setValue}
             value={value}
