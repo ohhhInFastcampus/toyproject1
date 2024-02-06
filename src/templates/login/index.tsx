@@ -11,9 +11,11 @@ interface LoginPropsType {
     setEmail: React.Dispatch<React.SetStateAction<string>>,
     setPassword: React.Dispatch<React.SetStateAction<string>>,
     error : string
+    openModal: () => void, // Add openModal function to props
+    closeModal: () => void //
 }
 
-function Login({handleLogin, email, password, setEmail, setPassword,error}: LoginPropsType) {
+function Login({handleLogin, email, password, setEmail, setPassword,error,openModal, closeModal}: LoginPropsType) {
 
 
     return (
@@ -46,7 +48,7 @@ function Login({handleLogin, email, password, setEmail, setPassword,error}: Logi
                         로그인
                     </Button>
                     <CardDescription className="nmt-3">
-                        아이디 / 비밀번호 찾기
+                        <button onClick={openModal}>아이디 / 비밀번호 찾기</button>
                     </CardDescription>
                 </CardFooter>
             </Card>
