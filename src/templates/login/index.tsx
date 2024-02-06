@@ -15,7 +15,7 @@ interface LoginPropsType {
     closeModal: () => void //
 }
 
-function Login({handleLogin, email, password, setEmail, setPassword,error,openModal, closeModal}: LoginPropsType) {
+function Login({handleLogin, email, password, setEmail, setPassword,error,openModal}: LoginPropsType) {
 
 
     return (
